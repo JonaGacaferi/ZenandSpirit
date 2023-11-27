@@ -1,0 +1,191 @@
+<<<<<<< HEAD
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+  ul{
+  list-style-type: none;
+    padding:0;
+    
+  }
+header{
+    background: url(fotobcgr.jpg) no-repeat center;
+    min-height: 100vh;
+    background-size: cover;
+    
+   
+}
+
+body{
+  padding:2em;
+  background: lightblue;
+  margin: 0px;
+  padding: 0px;
+  height:100%;
+  overflow:scroll;
+  font-family:  Helvetica, sans-serif;
+}
+
+body p{
+    font-size: 1.1em;
+    line-height: 27px;
+    color: blueviolet;
+
+}
+/* Add this CSS to your existing styles */
+
+body {
+  padding-top: 60px; /* Adjust the value based on your navigation bar's height */
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px; 
+  background-color: transparent;
+  transition: background-color 0.4s;
+  color: cornflowerblue;
+}
+
+nav.scroll {
+  background-color: rgba(0, 0, 0, 0.7); /* Change the transparency level as needed */
+}
+/*
+.navbar , .menu{
+  margin: 0 auto;
+   width: 100%;
+}
+
+.navbar{
+  max-width: 1350px;
+  position: relative;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+
+}
+
+.menu{
+max-width: 1000px;
+
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2em;
+  transition: 0.4s;
+  color: cornflowerblue;
+}
+#zenspirit{
+  display: flex;
+  justify-content: left;
+}
+
+nav .menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+}
+
+nav .menu ul{
+  width: 100%;
+  margin: 0 1em;
+}
+
+
+nav .menu ul li {
+  display: inline-block;
+  margin: 0.7em;
+
+}
+
+nav a{
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: 0.3s;
+  font-weight: 600;
+  color: black;
+}
+
+nav a:hover{
+  color: grey;
+
+}
+
+nav .fa-bars{
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: right;
+}
+
+nav .fa-bars:hover{
+  color: grey;
+}
+
+.menu {
+  background: #111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  text-align: center;
+  font-size: 1.3em;
+  opacity: 0;
+  overflow-y: hidden;
+
+}
+
+
+
+
+
+/*
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color:	#bbbbbb;
+    align-items: center;
+    
+
+  }
+
+  .navbar ul {
+    display: flex;
+   
+    list-style-type: none;
+    margin: 0;
+  }
+  
+  .navbar a {
+    float: left;
+    color: 	#ffcc66;
+    text-align: left;
+    text-decoration: none;
+    font-size: 20px;
+    justify-content: space-evenly;
+  }
+  
+  .navbar a:hover {
+    background: #89a1b5;
+    color: #ffeebb;
+    border-radius: 10px;
+    justify-content: space-around;
+  }
+
+  #zenspirit{
+      margin-left: 0px;
+  }
+=======
+>>>>>>> parent of 4a3270a (Commiting the changes)
