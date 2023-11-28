@@ -30,6 +30,13 @@ nav{
     display: flex;
     justify-content: center;
     flex-grow: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: transparent;
+    transition: background-color 0.4s;
 }
 
 nav a{
