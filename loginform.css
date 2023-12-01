@@ -1,0 +1,145 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: 'Playfair Display', serif;
+    background-color: lightblue;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    padding: 15px;
+    color: white;
+}
+
+.headeri{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: transparent;
+    transition: background-color 0.4s;
+}
+
+nav a{
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+form{
+    position: relative;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.loginForm{
+    text-align: center;
+}
+
+.loginForm h1{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.login :hover{
+    transition-duration: 0.3s;
+    color: black;
+    background-color: white;
+}
+
+label{
+    color: #555;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.button{
+    text-align: center;
+}
+
+.login{
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login :hover{
+    background-color: #555;
+}
+
+.loginForm p{
+    color: #555;
+    margin-top: 15px;
+}
+
+a{
+    text-decoration: underline;
+    color: #333;
+}
+
+@media screen and (max-width: 600px) {
+    header{
+        align-items: stretch;
+        flex-direction: column;
+    }
+    
+    .headeri{
+        margin-bottom: 10px;
+    }
+
+    nav{
+        margin-top: 10px;
+        order: 3;
+    }
+}
+
+footer{
+    text-align: center;
+    background-color: #555;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+}
