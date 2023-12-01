@@ -23,13 +23,13 @@
     <hr />
 
     <form>
-      <div class="loginForm">
+      <div class="loginForm" onsubmit="validateForm()">
         <h1>LOG IN</h1>
         <label for="email">Email</label>
-        <input type="email" id="email" />
+        <input type="email" id="email" required />
         <br />
         <label for="password">Password</label>
-        <input type="password" id="password" />
+        <input type="password" id="password" required />
         <div class="button">
           <a href="login.html"><button class="login">LOG IN</button></a>
         </div>
@@ -48,7 +48,12 @@
           return false;
         }
 
-        var passwordRegex = /^[^\0-9] +$/;
+        var passwordRegex = /^[8] +$/;
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters long!");
+          return false;
+        }
+        return true;
       }
     </script>
 
