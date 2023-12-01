@@ -25,17 +25,32 @@
     <form>
       <div class="loginForm">
         <h1>LOG IN</h1>
-        <label>Email</label>
-        <input type="email" />
+        <label for="email">Email</label>
+        <input type="email" id="email" />
         <br />
-        <label>Password</label>
-        <input type="password" />
+        <label for="password">Password</label>
+        <input type="password" id="password" />
         <div class="button">
           <a href="login.html"><button class="login">LOG IN</button></a>
         </div>
-        <p>New to Zen & Spirit? <a href="#">Sign Up</a></p>
+        <p>New to Zen & Spirit? <a href="SignUp.html">Sign Up</a></p>
       </div>
     </form>
+
+    <script>
+      function validateForm() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@] +$/;
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address!");
+          return false;
+        }
+
+        var passwordRegex = /^[^\0-9] +$/;
+      }
+    </script>
 
     <footer>
       <p>&copy; 2023 Zen & Spirit. All rights reserved.</p>
