@@ -21,6 +21,26 @@ header{
     
    
 }
+
+header #h2-header , #p-brenda-h2-header{
+  margin-top: 140px;
+  padding-right: 20px;
+  color: rgb(90, 32, 87);
+  text-align: right;
+ 
+}
+
+header #h2-header{
+  font-size: 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
+
+}
+
+header #p-brenda-h2-header{
+  font-size: 20px;
+  margin-top: 0px;
+}
 .menu{
   padding: 10px  ;
  
@@ -112,13 +132,8 @@ body p{
   justify-content: center;
 }
  
-#h2-header{
-    margin-top: 30px;
-    padding: 300px;
-   color: rgb(90, 32, 87);
-   text-align: center;
-   font-size: xx-large;
-}
+
+
 
 section{
   width: 80%;
@@ -150,11 +165,22 @@ section{
 
 .flex-box .kolonat img{
   width:80%;
+  border-radius: 20px;
 }
 
 .evente .flexbox{
   margin-top: 50px;
 
+}
+
+.kolonat{
+  display: flex;
+  align-items: space-around;
+  background-color: aliceblue;
+  border-radius: 20px;
+  height: 510px;
+  padding: 15px;
+  padding-top: 20px;
 }
 
 h4{
@@ -169,9 +195,7 @@ h4{
   font-size: medium;
 }
 
-.evente .ctn{
-  margin-top: 30px;
-}
+
 
 .buttons-flex-box {
   background-color: #ce66db;
