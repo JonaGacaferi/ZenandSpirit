@@ -3,25 +3,112 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-  ul{
-  list-style-type: none;
-    padding:0;
-    
-  }
+body , html {
+  overflow-x: hidden;
+  
+}
+
 header{
-    background: url(fotobcgr.jpg) no-repeat center;
-    min-height: 100vh;
+  
+    background-image: url(fotobcgr.jpg) ;
+    height: 100vh;
+    width: 100%;
     background-size: cover;
+    
     
    
 }
 
+header #h2-header , #p-brenda-h2-header{
+  margin-top: 140px;
+  padding-right: 20px;
+  color: rgb(90, 32, 87);
+  text-align: right;
+ 
+}
+
+header #h2-header{
+  font-size: 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
+
+}
+
+header #p-brenda-h2-header{
+  font-size: 20px;
+  margin-top: 0px;
+}
+.menu{
+  padding: 10px  ;
+ 
+}
+
+nav {
+  left:0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: fixed;
+  background-color: #d3a2c8;
+  opacity: 0.8;
+  
+}
+
+.logo{
+  width: 710px;
+  color: lightgoldenrodyellow;
+}
+
+.logo :hover{
+  color: #d3a2c8;
+  transition-duration: 0.3s;
+}
+.logo1{
+  margin: 5px 5px;
+}
+
+
+
+nav  ul li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 10px 20px;
+}
+nav ul li a{
+  color: lightgoldenrodyellow;
+  text-decoration: none;
+  position: relative;
+  
+}
+
+nav ul li a::after{
+  content: '';
+  width: 0;
+  left: 0;
+  height: 3px;
+  background: #c77bb6;
+  position: absolute;
+   transition-duration: 0.3s;
+   bottom: -5px;
+
+}
+nav ul li a:hover::after{
+  width: 100%;
+}
+
+
+
 body{
+ 
   padding:2em;
   background: lightblue;
-  margin: 0px;
+  margin: 0px ;
   padding: 0px;
   height:100%;
   overflow:scroll;
@@ -34,155 +121,126 @@ body p{
     color: blueviolet;
 
 }
-/* Add this CSS to your existing styles */
 
-body {
-  padding-top: 60px; /* Adjust the value based on your navigation bar's height */
+.nav-active{
+  background: lavender;
+  padding: 1em; 
 }
 
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px; 
-  background-color: transparent;
-  transition: background-color 0.4s;
-  color: cornflowerblue;
-}
-
-nav.scroll {
-  background-color: rgba(0, 0, 0, 0.7); /* Change the transparency level as needed */
-}
-/*
-.navbar , .menu{
-  margin: 0 auto;
-   width: 100%;
-}
-
-.navbar{
-  max-width: 1350px;
-  position: relative;
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
-
-}
-
-.menu{
-max-width: 1000px;
-
-}
-nav{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 2em;
-  transition: 0.4s;
-  color: cornflowerblue;
-}
-#zenspirit{
+#p1{
   display: flex;
-  justify-content: left;
+  justify-content: center;
 }
+ 
 
-nav .menu{
+
+
+section{
+  width: 80%;
+  margin: 80px auto;
+}
+.titulli{
+   text-align: center;
+   font-size: 22px;
+   color: darkorchid;
+   margin: 30px auto;
+   text-decoration: underline solid purple;
+
+}
+ 
+.flex-box{
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
+  justify-content: space-between;
+  
 
 }
 
-nav .menu ul{
-  width: 100%;
-  margin: 0 1em;
+.flex-box .kolonat{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-nav .menu ul li {
-  display: inline-block;
-  margin: 0.7em;
-
+.flex-box .kolonat img{
+  width:80%;
+  border-radius: 20px;
 }
 
-nav a{
-  text-decoration: none;
-  font-size: 0.9em;
-  transition: 0.3s;
-  font-weight: 600;
-  color: black;
-}
-
-nav a:hover{
-  color: grey;
+.evente .flexbox{
+  margin-top: 50px;
 
 }
 
-nav .fa-bars{
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: 0.3s;
-  text-align: right;
+.kolonat{
+  display: flex;
+  align-items: space-around;
+  background-color: aliceblue;
+  border-radius: 20px;
+  height: 510px;
+  padding: 15px;
+  padding-top: 20px;
 }
 
-nav .fa-bars:hover{
-  color: grey;
+h4{
+  font-size: 20px;
+  color: #c77bb6;
+  margin: 20px auto;
 }
 
-.menu {
-  background: #111;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
+.evente p{
+  color: #d3a2c8;
+  padding: 0px 30px;
+  font-size: medium;
+}
+
+
+
+.buttons-flex-box {
+  background-color: #ce66db;
+  border: 2px solid transparent;
+  color: white;
+  padding: 12px 22px;
   text-align: center;
-  font-size: 1.3em;
-  opacity: 0;
-  overflow-y: hidden;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  border-radius: 35px;
+}
 
+.buttons-flex-box:hover {
+  background-color: #bf9dc5 ;
+  border-color:  #b274be;
+}
+
+.video1{
+  display:flex ;
+  align-items: center;
 }
 
 
 
 
 
-/*
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color:	#bbbbbb;
-    align-items: center;
-    
-
-  }
-
-  .navbar ul {
-    display: flex;
-   
-    list-style-type: none;
-    margin: 0;
-  }
+/*@media only screen and(max-width:850px){
+   .navbar{
+    padding: 0;
+   }
   
-  .navbar a {
-    float: left;
-    color: 	#ffcc66;
-    text-align: left;
-    text-decoration: none;
-    font-size: 20px;
-    justify-content: space-evenly;
-  }
-  
-  .navbar a:hover {
-    background: #89a1b5;
-    color: #ffeebb;
-    border-radius: 10px;
-    justify-content: space-around;
-  }
+   .logo{
+    position: absolute;
+    top: 30px;
+    left:30px;
+   }
+   nav a{
+     flex-direction: column;
+     width: 100%;
+     height:100vh;
+     justify-content: center;
 
-  #zenspirit{
-      margin-left: 0px;
+   }
   }
