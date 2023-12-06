@@ -25,7 +25,9 @@ align-items: center;
 justify-content: center;
 color: white;
 }
-
+ form, ul {
+    list-style-type:none ;
+ }
 nav{
 display: flex;
 justify-content: center;

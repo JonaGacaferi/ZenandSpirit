@@ -6,7 +6,7 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-body , html {
+ html {
   overflow-x: hidden;
   
 }
@@ -17,6 +17,7 @@ header{
     height: 100vh;
     width: 100%;
     background-size: cover;
+    
     
     
    
@@ -223,6 +224,27 @@ h4{
 }
 
 
+body #p1{
+   display:flex;
+   justify-content:space-between;
+   align-items:center;
+   
+}
+
+footer{
+  background-color: #764d7e;
+  align-items: center;
+  padding: 10px;
+
+}
+
+  .video1 #bcgr-vid{
+     display: flex;
+     justify-content: end;
+    /*position:sticky;*/
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
 
 
 
