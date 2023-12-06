@@ -8,19 +8,26 @@
     <link rel="icon" href="meditation_logo copy.png" type="image/x-icon" />
   </head>
   <body>
+    <div class="video">
+      <video autoplay muted loop id="background_video">
+        <source src="video_meditation.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
     <header>
       <div class="headeri">
-        <img src="lotus_logo.png" height="100px" />
-        <p>Zen & Spirit</p>
+        <nav>
+          <img src="yogalogo.png" height="50px" class="logo1" />
+          <p class="logo">Zen & Spirit</p>
+          <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="about">About Us</a></li>
+            <li><a href="YogaClasses.html">Yoga Classes</a></li>
+            <li><a href="contact">Meditation Classes</a></li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <a href="homepage.html">Home</a>
-        <a href="about">About Us</a>
-        <a href="YogaClasses.html">Yoga Classes</a>
-        <a href="contact">Meditation Classes</a>
-      </nav>
     </header>
-    <hr />
 
     <form>
       <div class="loginForm" onsubmit="validateForm()">
@@ -36,6 +43,31 @@
         <p>New to Zen & Spirit? <a href="SignUp.html">Sign Up</a></p>
       </div>
     </form>
+
+    <footer>
+      <div class="content">
+        <div class="links">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#about">About Us</a></li>
+          </ul>
+          <ul>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="media_icons">
+          <a href="https://www.instagram.com" target="_blank"
+            ><img src="#" alt="Instagram"
+          /></a>
+          <a href="https://www.facebook.com" target="_blank"
+            ><img src="#" alt="Facebook"
+          /></a>
+        </div>
+        <p>&copy; 2023 Your Website. All rights reserved.</p>
+      </div>
+    </footer>
 
     <script>
       function validateForm() {
@@ -56,9 +88,5 @@
         return true;
       }
     </script>
-
-    <footer>
-      <p>&copy; 2023 Zen & Spirit. All rights reserved.</p>
-    </footer>
   </body>
 </html>
