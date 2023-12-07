@@ -25,14 +25,12 @@ header #h2-header , #p-brenda-h2-header{
   padding-right: 20px;
   color: rgb(90, 32, 87);
   text-align: right;
- 
 }
 
 header #h2-header{
   font-size: 30px;
   padding-top: 60px;
   padding-bottom: 30px;
-
 }
 
 header #p-brenda-h2-header{
@@ -92,8 +90,8 @@ nav ul li a::after{
   height: 3px;
   background: #c77bb6;
   position: absolute;
-   transition-duration: 0.3s;
-   bottom: -5px;
+  transition-duration: 0.3s;
+  bottom: -5px;
 
 }
 nav ul li a:hover::after{
