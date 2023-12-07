@@ -6,7 +6,7 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-body , html {
+ body , footer {
   overflow-x: hidden;
   
 }
@@ -17,9 +17,7 @@ header{
     height: 100vh;
     width: 100%;
     background-size: cover;
-    
-    
-   
+  
 }
 
 header #h2-header , #p-brenda-h2-header{
@@ -143,6 +141,9 @@ section{
    color: darkorchid;
    margin: 30px auto;
    text-decoration: underline solid purple;
+   background-color: #ecc4f3;
+   width: 600px;
+   padding: 3px;
 
 }
  
@@ -165,11 +166,10 @@ section{
   width:80%;
   border-radius: 20px;
 }
-
-.evente .flexbox{
-  margin-top: 50px;
-
+.evente{
+  margin-top: 3%;
 }
+
 
 .kolonat{
   display: flex;
@@ -215,30 +215,158 @@ h4{
   border-color:  #b274be;
 }
 
+
 .video1{
-  display:flex ;
+  position: relative;
+}
+
+.text-1{
+  position: absolute;
+  top: 15%;
+  left: 16%;
+  z-index: 2;
+  padding: 10px;
+  text-align: center;
+  color: white;
+
+}
+.text-2{
+  position: absolute;
+  top: 40%;
+  left: 16%;
+  z-index: 2;
+  padding: 10px;
+  text-align: center;
+  color: white;
+
+
+}
+.text-3{
+  position: absolute;
+  top: 70%;
+  left: 18%;
+  z-index: 2;
+  padding: 10px;
+  text-align: center;
+  color: white;
+
+
+}
+
+.text-1 #p1{
+   display:flex;
+  color: white;
+   justify-content: space-evenly;
+   padding: 10px;
+   
+  }
+  
+  .text-2 #p2{
+    display:flex;
+   
+    justify-content: space-evenly;
+    padding: 10px;
+    color: white;
+    
+   }
+
+   .text-3 #p3{
+    display:flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    color: white;
+    
+   }
+
+
+.video1 #bcgr-vid{
+     display: block;
+     width: 100%;
+    height:  700px  ;
+    z-index: -1; 
+    opacity: 0.8;
+    position: relative;
+    object-fit: cover;
+}
+footer{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(114, 45, 114);
+  flex-direction: column;
   align-items: center;
+  color: rgb(199, 148, 202);
+  height: 240px;
+  padding: 20px;
+}
+
+.f{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 19px;
+  width: 70%;
+  color: cadetblue;
+  font-weight: bold;
+
+}
+
+.ff{
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+  height: 10%;
+
+}
+
+.ff img{
+  height: 30px;
+  width: 30px;
+
+}
+
+.footermain{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+
+.footerleft{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  font-size: 15px;
+  
+}
+
+.footercenter{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 15px;
+  
+  
+}
+
+.footerright{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 10%;
+  width: 150px;
+  font-size: 15px;
+  
+}
+
+
+.fundi{
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
 }
 
 
 
 
 
-/*@media only screen and(max-width:850px){
-   .navbar{
-    padding: 0;
-   }
-  
-   .logo{
-    position: absolute;
-    top: 30px;
-    left:30px;
-   }
-   nav a{
-     flex-direction: column;
-     width: 100%;
-     height:100vh;
-     justify-content: center;
-
-   }
-  }

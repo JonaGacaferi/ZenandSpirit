@@ -1,0 +1,188 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+ body , footer {
+  overflow-x: hidden;
+  
+}
+
+header{
+  
+    background-image: url(fotobcgr.jpg) ;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+  
+}
+
+header #h2-header , #p-brenda-h2-header{
+  margin-top: 140px;
+  padding-right: 20px;
+  color: rgb(90, 32, 87);
+  text-align: right;
+ 
+}
+
+header #h2-header{
+  font-size: 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
+
+}
+
+header #p-brenda-h2-header{
+  font-size: 20px;
+  margin-top: 0px;
+}
+.menu{
+  padding: 10px  ;
+ 
+}
+
+nav {
+  left:0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: fixed;
+  background-color: #d3a2c8;
+  opacity: 0.8;
+  
+}
+
+.logo{
+  width: 710px;
+  color: lightgoldenrodyellow;
+}
+
+.logo :hover{
+  color: #d3a2c8;
+  transition-duration: 0.3s;
+}
+.logo1{
+  margin: 5px 5px;
+}
+
+
+
+nav  ul li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 10px 20px;
+}
+nav ul li a{
+  color: lightgoldenrodyellow;
+  text-decoration: none;
+  position: relative;
+  
+}
+
+nav ul li a::after{
+  content: '';
+  width: 0;
+  left: 0;
+  height: 3px;
+  background: #c77bb6;
+  position: absolute;
+   transition-duration: 0.3s;
+   bottom: -5px;
+
+}
+nav ul li a:hover::after{
+  width: 100%;
+}
+
+.nav-active{
+  background: lavender;
+  padding: 1em; 
+}
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(114, 45, 114);
+  flex-direction: column;
+  align-items: center;
+  color: rgb(199, 148, 202);
+  height: 240px;
+  padding: 20px;
+}
+
+.f{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 19px;
+  width: 70%;
+  color: cadetblue;
+  font-weight: bold;
+
+}
+
+.ff{
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+  height: 10%;
+
+}
+
+.ff img{
+  height: 30px;
+  width: 30px;
+
+}
+
+.footermain{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+
+.footerleft{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  font-size: 15px;
+  
+}
+
+.footercenter{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 15px;
+  
+  
+}
+
+.footerright{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 10%;
+  width: 150px;
+  font-size: 15px;
+  
+}
+
+
+.fundi{
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+}
+
+
+
+
+
