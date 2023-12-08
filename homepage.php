@@ -91,9 +91,9 @@
         <h2>About Our Page</h2>
         <h2>Our Links</h2>
         <div class="ff">
-            <a href="https://www.facebook.com/" ><img src="facebook.png" alt="" ></a>
-            <a href="https://www.instagram.com/"><img src="instagram.png" alt=""></a>
-            <a href="https://www.youtube.com/"><img src="youtube.png" alt=""></a>
+            <a href="https://www.facebook.com/" ><img src="facebook_logo.png" alt="" ></a>
+            <a href="https://www.instagram.com/"><img src="instagram_logo.png" alt=""></a>
+            <a href="https://www.youtube.com/" ><img src="youtube_logo1.png" alt=""  style="width: 9px;"></a>
         </div>
     </div>
     <div class="footermain">

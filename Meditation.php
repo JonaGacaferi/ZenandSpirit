@@ -21,6 +21,22 @@
         </ul>
      </nav>
     </div>
+  </header>
+
+  <body>
+  <div class="slider">
+    <h2>lckjsncsc</h2>
+     <img name="mySlide" id="slideshow"/>
+     <button onclick="nextImg()">Next</button>
+     <button onclick="prevImg()">Previous</button>
+
+  </div>
+
+
+
+
+
+  </body>
     <footer>
       <div class="f">
           <h2>About Our Page</h2>
@@ -32,13 +48,7 @@
           </div>
       </div>
 
-
-
-
-
-
-
-      <div class="footermain">
+     <div class="footermain">
           <div class="footerleft">
               <p>Harmonize Your Existence: Immerse Yourself in Tranquility with our Guided Yoga and Meditation Experiences.</p>
           </div>
@@ -57,4 +67,27 @@
           <p>Designed by B&J</p>
       </div>
   </footer>
+
+    <script>
+      var i = 0;
+      var imgArray = [
+      "imgS/foto0.png",
+      "imgS/foto1.png",
+      "imgS/foto2.png",
+      "imgS/foto3.png",
+      "imgS/foto4.png"
+      ];
+      function nextImg() {
+          document.getElementById('slideshow').src = imgArray[i];
+            if (i < imgArray.length - 1) {
+              i++;
+              } else {
+               i = 0;
+              }
+      
+       }
+      document.body.addEventListener('load', ndrroImg());
+  </script>
+
+
   </html>
