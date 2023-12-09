@@ -5,35 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zen & Spirit</title>
     <link rel="stylesheet" href="loginform.css" />
-    <link rel="icon" href="meditation_logo copy.png" type="image/x-icon" />
+    <link rel="icon" href="yogalogo.png" type="image/x-icon" />
   </head>
 
   <body>
     <div class="video">
       <video autoplay muted loop id="background_video">
-        <source src="video_meditation.mp4" type="video/mp4" />
+        <source src="img/video_meditation.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
-    <header class="header">
-      <div class="logo1">
-        <img src="yogalogo.png" height="50px" />
-        <a class="logo">Zen & Spirit</a>
-      </div>
-
-      <input type="checkbox" id="check" />
-      <label for="check" class="icons">
-        <i class="bx bx-menu" id="menu_icon"></i>
-        <i class="bx bx-x" id="close_icon"></i>
-      </label>
-
-      <nav class="navbar">
-        <a href="homepage.html">Home</a>
-        <a href="#">Contact Us</a>
-        <a href="YogaClasses.html">Yoga Classes</a>
-        <a href="#">Meditation Classes</a>
+    <div class="menu">
+      <nav>
+        <div class="logo1">
+          <img src="yogalogo.png" height="50px" class="logo1" />
+          <p class="logo">Zen & Spirit</p>
+        </div>
+        <ul>
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="loginform.html">Log In</a></li>
+          <li><a href="YogaClasses.html">Yoga Classes</a></li>
+          <li><a href="Meditation.html">Meditation Classes</a></li>
+        </ul>
       </nav>
-    </header>
+    </div>
 
     <form>
       <div class="loginForm" onsubmit="validateForm()">
