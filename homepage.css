@@ -37,10 +37,7 @@ header #p-brenda-h2-header{
   font-size: 20px;
   margin-top: 0px;
 }
-.menu{
-  padding: 10px  ;
- 
-}
+
 
 nav {
   left:0;
@@ -59,17 +56,24 @@ nav {
 .logo{
   width: 710px;
   color: #7190a7;
+  margin-left: 25px;
 }
 
 .logo :hover{
   color: #c3c3c3;
   transition-duration: 0.3s;
 }
+
 .logo1{
-  margin: 5px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
+img{
+  margin-left: 25px;
+}
 
 nav  ul li {
   display: inline-block;
