@@ -9,55 +9,123 @@ body{
     background-color: lightblue;
 }
 
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    padding: 15px;
-    color: white;
-    backdrop-filter: blur(10px);
+.header{
     position: fixed;
-    width: 100%;
     top: 0;
-    z-index: 1000;
-}
-
-.headeri{
+    left: 0;
+    width: 100%;
+    padding: 1.3rem 10%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    color: white;
+    z-index: 100;
 }
 
-nav{
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    z-index: -1;
+}
+
+.logo1{
     display: flex;
-    justify-content: center;
-    flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav a{
-    color: #FFFFFF;
+.logo{
+    font-size: 2rem;
+    color:#333;
     text-decoration: none;
-    margin: 0 10px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    margin-left: 5px;
 }
 
-@media screen and (max-width: 600px) {
-    header{
-        align-items: stretch;
-        flex-direction: column;
+.navbar a{
+    font-size: 1.5rem;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+}
+
+#check{
+    display: none;
+}
+
+.icons{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 992px){
+    .header{
+        padding: 1.3rem 5%;
     }
-    
-    .headeri{
-        margin-bottom: 10px;
+}
+
+@media (max-width: 768px){
+    .icons{
+        display: inline-flex;
     }
 
-    nav{
-        margin-top: 10px;
-        order: 3;
+    #check:checked~.icons #menu_icon{
+        display: none;
+    }
+
+    .icons #close_icon{
+        display: none;
+    }
+
+    #check:checked~.icons #close_icon{
+        display: block;
+    }
+
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0, 0, 0, .1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        overflow: hidden;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar{
+        height: 17.7rem;
+    }
+
+    .navbar a{
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar a{
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    form{
+        width: 80%;
+        margin: 50px auto;
     }
 }
 
@@ -106,4 +174,5 @@ footer{
     width: 100%;
     bottom: 0;
     position: fixed;
+    display: none;
 }

@@ -4,69 +4,105 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zen & Spirit</title>
-    <link rel="stylesheet" href="signupform.css" />
+    <link rel="stylesheet" href="loginform.css" />
     <link rel="icon" href="meditation_logo copy.png" type="image/x-icon" />
   </head>
+
   <body>
-    <header>
-      <div class="headeri">
-        <img src="lotus_logo.png" height="100px" />
-        <p>Zen & Spirit</p>
+    <div class="video">
+      <video autoplay muted loop id="background_video">
+        <source src="video_meditation.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <header class="header">
+      <div class="logo1">
+        <img src="yogalogo.png" height="50px" />
+        <a class="logo">Zen & Spirit</a>
       </div>
-      <nav>
+
+      <input type="checkbox" id="check" />
+      <label for="check" class="icons">
+        <i class="bx bx-menu" id="menu_icon"></i>
+        <i class="bx bx-x" id="close_icon"></i>
+      </label>
+
+      <nav class="navbar">
         <a href="homepage.html">Home</a>
-        <a href="about">About Us</a>
+        <a href="#">Contact Us</a>
         <a href="YogaClasses.html">Yoga Classes</a>
-        <a href="contact">Meditation Classes</a>
+        <a href="#">Meditation Classes</a>
       </nav>
     </header>
-    <hr />
 
     <form>
-        <ul>
-      <li><div class="loginForm" onsubmit="validateForm()"></li>
-       <li> <h1>Sign up </h1></li>
-        <li><label for="name">First name & Last Name</label></li>
-        <li><input type="text" id="name" size="36" required></li>
-        <label for="email">E-mail</label>
-        <input type="text" id="email" size="30" required/>
-        <label for="password">Password</label>
-        <input type="password" id="password"  required/>
-        <li><input type="submit" value="Submit" id="submit-butoni" /></li>
+      <div class="loginForm" onsubmit="validateForm()">
+        <h1>SIGN UP</h1>
+        <label for="text">Username</label>
+        <input type="text" id="text" required />
+        <br />
+        <label for="date">Birthday</label>
+        <input type="date" id="date" required />
+        <br />
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required />
+        <br />
+        <label for="password">Create Password</label>
+        <input type="password" id="password" required />
+        <div class="button">
+          <a href="login.html"><button class="login">SIGN UP</button></a>
+        </div>
+        <p>
+          Already part of the community? <a href="loginform.html">Log In</a>
+        </p>
       </div>
-      </ul>
     </form>
 
     <footer>
-      <p>&copy; 2023 Zen & Spirit. All rights reserved.</p>
+      <div class="content">
+        <div class="media_icons">
+          <a href="https://www.instagram.com" target="_blank"
+            ><img src="instagram_logo.png" alt="Instagram"
+          /></a>
+          <a href="https://www.facebook.com" target="_blank"
+            ><img src="facebook_logo.png" alt="Facebook"
+          /></a>
+          <a href="https://www.youtube.com" target="_blank"
+            ><img src="youtube_logo1.png" alt="YouTube"
+          /></a>
+        </div>
+        <div class="links">
+          <ul>
+            <li><a href="#homepage.html">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#team">Our Team</a></li>
+          </ul>
+        </div>
+        <div class="footer_bottom">
+          <p>&copy; 2023 Your Website. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script>
+      function validateForm() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
 
-      function validateForm(){
-
-        var name =document.getElementById('name').value;
-        var email =document.getElementById('email').value;
-        var password=document.getElementById('password').value;
-        var nameRegex=/^[a-zA-Z\s]+$/;
-        if(!nameRegex.test(name)){
-          alert('Please enter a valid name !');
-           return false;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@] +$/;
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address!");
+          return false;
         }
 
-        var  emailRegex=/^[a-zA-Z0-9][a-zA-Z0-9_.]+@[a-zA-Z0-9_]+.[a-zA-Z0-9_.]+[a-zA-Z0-9]{2}+$/;
-        if(!emailRegex.test(email)){
-          alert('Please enter a valid email !');
-           return false;
-        }
-       
-        if (password.length<9){
-          alert('Password must be at least 9 characters long !');
+        var passwordRegex = /^[8] +$/;
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters long!");
           return false;
         }
         return true;
-
-        
       }
     </script>
   </body>

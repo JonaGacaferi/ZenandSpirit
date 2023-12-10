@@ -28,85 +28,63 @@ body, html{
     object-fit: cover;
 }
 
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 15px;
-    padding: 20px;
-    color: white;
-    position: relative;
-}
-
-.headeri{
-    padding: 10px;
-}
-
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
+.header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px;
-    background-color: white;
-    transition: background-color 0.4s;
+    padding: 1.3rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    z-index: -1;
+}
+
+.logo1{
+    display: flex;
     flex-wrap: wrap;
-    opacity: 0.8;
-    height: 50px;
-    vertical-align: 50px;
-    border-bottom: 0;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo{
-    width: 710px;
-    margin-right: 250px;
-    margin-top: 10px;
-    color: black;
-}
-.logo :hover{
-    transition-duration: 0.3s;
-}
-.logo1{
-    margin: 5px 5px;
-}
-
-nav ul{
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li{
-    display: inline-block;
-    list-style-type: none;
-    margin: 10px 20px;
-    padding-top: 0;
-
-}
-
-nav ul li a{
-    color: black;
+    font-size: 2rem;
+    color:#333;
     text-decoration: none;
-    position: relative;
-    vertical-align: 50px;
+    margin-left: 5px;
 }
 
-nav ul li a ::after{
-    content: '';
-    width: 0;
-    left: 0;
-    height: 3px;
-    background: #c77bb6;
-    position: relative;
-    transition-duration: 0.3s;
-    bottom: -5px;
+.navbar a{
+    font-size: 1.5rem;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
 }
 
-nav ul li a :hover ::after{
-    width: 100%;
+#check{
+    display: none;
+}
+
+.icons{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
 }
 
 form{
@@ -183,19 +161,64 @@ a{
     color: #333;
 }
 
-@media screen and (max-width: 600px) {
-    header{
-        align-items: stretch;
-        flex-direction: column;
+@media (max-width: 992px){
+    .header{
+        padding: 1.3rem 5%;
     }
-    
-    .headeri{
-        margin-bottom: 10px;
+}
+
+@media (max-width: 768px){
+    .icons{
+        display: inline-flex;
     }
 
-    nav{
-        margin-top: 10px;
-        order: 3;
+    #check:checked~.icons #menu_icon{
+        display: none;
+    }
+
+    .icons #close_icon{
+        display: none;
+    }
+
+    #check:checked~.icons #close_icon{
+        display: block;
+    }
+
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0, 0, 0, .1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        overflow: hidden;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar{
+        height: 17.7rem;
+    }
+
+    .navbar a{
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar a{
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    form{
+        width: 80%;
+        margin: 50px auto;
     }
 }
 
@@ -211,30 +234,6 @@ footer{
     margin-top: auto;
     transition: opacity 0.3s ease;
 }
-
-/*
-.links{
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.links ul{
-    list-style-type: none;
-    padding: 0;
-}
-
-.links li{
-    margin: 10px 0;
-}
-
-.links a{
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-*/
 
 .links{
     margin: 30px 0;
@@ -301,4 +300,8 @@ footer{
 .content{
     width: 100%;
     padding: 70px 30px 20px;
+}
+
+footer{
+    display: none;
 }
