@@ -19,10 +19,7 @@ header{
 }
 
 
-.menu{
-  padding: 10px  ;
- 
-}
+
 
 nav {
   left:0;
@@ -38,10 +35,14 @@ nav {
   z-index: 3;
   
 }
+  img{
+  margin-left: 25px;
+ }
 
 .logo{
   width: 710px;
   color: #7190a7;
+  margin-left: 25px;
 }
 
 .logo :hover{
@@ -49,7 +50,10 @@ nav {
   transition-duration: 0.3s;
 }
 .logo1{
-  margin: 5px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 
