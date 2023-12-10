@@ -11,33 +11,14 @@
 }
 
 header{
-  
-    background-image: url(class6.jpg) ;
+   background-image: url(foto8.jpg) ;
     height: 100vh;
     width: 100%;
     background-size: cover;
   
 }
 
-header #h2-header , #p-brenda-h2-header{
-  margin-top: 140px;
-  padding-right: 20px;
-  color: rgb(90, 32, 87);
-  text-align: right;
- 
-}
 
-header #h2-header{
-  font-size: 30px;
-  padding-top: 60px;
-  padding-bottom: 30px;
-
-}
-
-header #p-brenda-h2-header{
-  font-size: 20px;
-  margin-top: 0px;
-}
 .menu{
   padding: 10px  ;
  
@@ -52,19 +33,19 @@ nav {
   justify-content: space-between;
   flex-wrap: wrap;
   position: fixed;
-  background-color: #d3a2c8;
-  opacity: 0.8;
+  background-color:#9dc19d;
+  opacity: 0.9;
   z-index: 3;
   
 }
 
 .logo{
   width: 710px;
-  color: lightgoldenrodyellow;
+  color: #7190a7;
 }
 
 .logo :hover{
-  color: #d3a2c8;
+  color: #c3c3c3;
   transition-duration: 0.3s;
 }
 .logo1{
@@ -79,7 +60,7 @@ nav  ul li {
   margin: 10px 20px;
 }
 nav ul li a{
-  color: lightgoldenrodyellow;
+  color: #7190a7;
   text-decoration: none;
   position: relative;
   
@@ -90,7 +71,7 @@ nav ul li a::after{
   width: 0;
   left: 0;
   height: 3px;
-  background: #c77bb6;
+  background: #7190a7;
   position: absolute;
    transition-duration: 0.3s;
    bottom: -5px;
@@ -100,13 +81,10 @@ nav ul li a:hover::after{
   width: 100%;
 }
 
-.nav-active{
-  background: lavender;
-  padding: 1em; 
-}
+
 
 body{
-  background: lightblue;
+  background: #c3c3c3;
 }
 
 .container{
@@ -122,7 +100,7 @@ body .slide-pics{
   flex-direction: column;
   justify-content: center;
   font-family: 'Segoe UI light', Tahoma;
-  width: 700px;
+  width: 1000px;
   align-items: left;
   
 }
@@ -194,24 +172,38 @@ body .slide-pics{
 .image-container {
   display: flex;
   justify-content: space-evenly;
-  background-color: #9dc19d;
-  padding: 10px ; 
+  align-items: center; 
+  background-color: #a895b4;
+  padding: 10px;
   border-radius: 8px;
-  width: 75%;
-  margin-right: 0%;
+  width: 95%;
 }
 
+.image-container img {
+  width: 150px;
+  border-radius: 4px;
+}
 
-.image-container p ,h2 {
-  display: flex;
-  justify-content: space-between;
-  flex-direction:column;
+.text-meditation-gallery {
+  flex: 1; 
+  padding-left: 20px; 
+}
 
+.text-meditation-gallery p,
+.text-meditation-gallery h2 {
   text-align: left;
-  font-size: medium;
-  
-  
+  color: #f6f6f6;
 }
+
+.text-meditation-gallery h2 {
+  font-size: large;
+}
+
+.text-meditation-gallery p {
+  font-size: medium;
+  margin-top: 0; 
+}
+
 
 
 .meditation-gallery img {
@@ -225,7 +217,7 @@ footer{
   display: flex;
   justify-content: space-between;
   align-content: end;
-  background-color: rgb(114, 45, 114);
+  background-color: #5e778a;
   flex-direction: column;
   align-items: center;
   color: rgb(199, 148, 202);
@@ -239,7 +231,6 @@ footer{
   align-items: center;
   font-size: 19px;
   width: 70%;
-  color: cadetblue;
   font-weight: bold;
 
 }
