@@ -27,52 +27,52 @@
       </div>
     </header>
 
-    <form id="form">
-      <div class="loginForm" onsubmit="validateForm()">
+    <form onsubmit="return validateForm()">
+      <div class="loginForm">
         <h1>SIGN UP</h1>
-        <div class="input_control">
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Username"
-            required
-          />
-          <div class="error"></div>
-        </div>
+
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+        <span id="usernameError" class="error"></span>
+
         <br />
-        <div class="input_control">
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          />
-          <div class="error"></div>
-        </div>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email Address"
+          required
+        />
+        <span id="emailError" class="error"></span>
+
         <br />
-        <div class="input_control">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Create Password"
-            required
-          />
-          <div class="error"></div>
-        </div>
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Create Password"
+          required
+        />
+        <span id="passwordError" class="error"></span>
+
         <br />
-        <div class="input_control">
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            required
-          />
-          <div class="error"></div>
-        </div>
+
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          required
+        />
+        <span id="confirmPasswordError" class="error"></span>
+
         <div class="button">
           <a href="#"><button class="login">SIGN UP</button></a>
         </div>
@@ -89,25 +89,37 @@
         var password = document.getElementById("password").value;
         var confirmPassword = document.getElementById("confirmPassword").value;
 
-        if ((username = "")) {
-          alert("Username can't be blank!");
+        if (username.trim() === "") {
+          document.getElementById("usernameError").innerText =
+            "Username cannot be empty";
           return false;
+        } else {
+          document.getElementById("usernameError").innerText = "";
         }
 
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@] +$/;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-          alert("Please enter a valid email address!");
+          document.getElementById("emailError").innerText =
+            "Invalid email address";
           return false;
+        } else {
+          document.getElementById("emailError").innerText = "";
         }
 
         if (password.length < 8) {
-          alert("Password must be at least 8 characters long!");
+          document.getElementById("passwordError").innerText =
+            "Password must be at least 8 characters long";
           return false;
+        } else {
+          document.getElementById("passwordError").innerText = "";
         }
 
-        if (confirmPassword != password) {
-          alert("Passwords doesn't match!");
+        if (password !== confirmPassword) {
+          document.getElementById("confirmPasswordError").innerText =
+            "Passwords do not match";
           return false;
+        } else {
+          document.getElementById("confirmPasswordError").innerText = "";
         }
         return true;
       }

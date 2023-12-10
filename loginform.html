@@ -30,14 +30,18 @@
       </nav>
     </div>
 
-    <form>
-      <div class="loginForm" onsubmit="validateForm()">
+    <form onsubmit="return validateForm()">
+      <div class="loginForm">
         <h1>LOG IN</h1>
         <label for="email">Email</label>
-        <input type="email" id="email" required />
+        <input type="email" id="email" name="email" required />
+        <span id="emailError" class="error"></span>
+
         <br />
+
         <label for="password">Password</label>
-        <input type="password" id="password" required />
+        <input type="password" id="password" name="password" required />
+        <span id="passwordError" class="error"></span>
         <div class="button">
           <a href="login.html"><button class="login">LOG IN</button></a>
         </div>
@@ -50,15 +54,21 @@
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
 
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@] +$/;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-          alert("Please enter a valid email address!");
+          document.getElementById("emailError").innerText =
+            "Invalid email address";
           return false;
+        } else {
+          document.getElementById("emailError").innerText = "";
         }
 
         if (password.length < 8) {
-          alert("Password must be at least 8 characters long!");
+          document.getElementById("passwordError").innerText =
+            "Password must be at least 8 characters long";
           return false;
+        } else {
+          document.getElementById("passwordError").innerText = "";
         }
         return true;
       }
