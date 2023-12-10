@@ -11,7 +11,6 @@
   <body>
     <header>
       <div class="menu">
-        <img src="Background_Photo4.jpg" alt="Background" />
         <nav>
           <div class="logo1">
             <img src="yogalogo.png" height="50px" class="logo1" />
@@ -27,36 +26,54 @@
       </div>
     </header>
 
-    <form>
-      <div class="loginForm" onsubmit="validateForm()">
+    <form onsubmit="return validateForm()">
+      <div class="loginForm">
         <h1>SIGN UP</h1>
-        <input type="text" id="text" placeholder="Username" required />
+
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+        <span id="usernameError" class="error"></span>
+
         <br />
-        <input type="email" id="email" placeholder="Email Address" required />
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email Address"
+          required
+        />
+        <span id="emailError" class="error"></span>
+
         <br />
+
         <input
           type="password"
           id="password"
+          name="password"
           placeholder="Create Password"
           required
         />
+        <span id="passwordError" class="error"></span>
+
         <br />
+
         <input
           type="password"
-          id="password"
-          placeholder="Re-type Password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm Password"
           required
         />
-        <label> <input type="radio" name="gjinia" id="male" /> Male </label>
-        <label> <input type="radio" name="gjinia" id="female" /> Female </label>
+        <span id="confirmPasswordError" class="error"></span>
 
-        <select name="pick">
-          <option value="Yoga">Yoga</option>
-          <option value="Meditation">Meditation</option>
-          <option value="Both">Both</option>
-        </select>
         <div class="button">
-          <a href="login.html"><button class="login">SIGN UP</button></a>
+          <a href="#"><button class="login">SIGN UP</button></a>
         </div>
         <p>
           Already part of the community? <a href="loginform.html">Log In</a>
@@ -64,49 +81,44 @@
       </div>
     </form>
 
-    <footer>
-      <div class="content">
-        <div class="media_icons">
-          <a href="https://www.instagram.com" target="_blank"
-            ><img src="instagram_logo.png" alt="Instagram"
-          /></a>
-          <a href="https://www.facebook.com" target="_blank"
-            ><img src="facebook_logo.png" alt="Facebook"
-          /></a>
-          <a href="https://www.youtube.com" target="_blank"
-            ><img src="youtube_logo1.png" alt="YouTube"
-          /></a>
-        </div>
-        <div class="links">
-          <ul>
-            <li><a href="#homepage.html">Home</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#team">Our Team</a></li>
-          </ul>
-        </div>
-        <div class="footer_bottom">
-          <p>&copy; 2023 Your Website. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-
     <script>
       function validateForm() {
+        var username = document.getElementById("username").value;
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
 
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@] +$/;
-        if (!emailRegex.test(email)) {
-          alert("Please enter a valid email address!");
+        if (username.trim() === "") {
+          document.getElementById("usernameError").innerText =
+            "Username cannot be empty";
           return false;
+        } else {
+          document.getElementById("usernameError").innerText = "";
         }
 
-        var passwordRegex = /^[8] +$/;
-        if (password.length < 8) {
-          alert("Password must be at least 8 characters long!");
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          document.getElementById("emailError").innerText =
+            "Invalid email address";
           return false;
+        } else {
+          document.getElementById("emailError").innerText = "";
+        }
+
+        if (password.length < 8) {
+          document.getElementById("passwordError").innerText =
+            "Password must be at least 8 characters long";
+          return false;
+        } else {
+          document.getElementById("passwordError").innerText = "";
+        }
+
+        if (password !== confirmPassword) {
+          document.getElementById("confirmPasswordError").innerText =
+            "Passwords do not match";
+          return false;
+        } else {
+          document.getElementById("confirmPasswordError").innerText = "";
         }
         return true;
       }
