@@ -257,7 +257,7 @@ footer{
     }
 }
 
-@media (max-width: 768px){
+@media (min-width: 767px) and (max-width: 1023px){
     header #h2_header{
         margin-top: 40px;
         font-size: 24px;
@@ -307,7 +307,21 @@ footer{
     }
 }
 
-@media (max-width: 480px){
+@media (max-width: 767px){
+    header #h2_header{
+        margin-top: 40px;
+        font-size: 24px;
+    }
+
+    .logo{
+        font-size: 18px;
+    }
+
+    nav{
+        text-align: center;
+        padding: 10px;
+    }
+
     nav ul{
         width: 100%;
         display: flex;
@@ -320,11 +334,25 @@ footer{
         width: 100%;
     }
 
-    .logo{
-        font-size: 16px;
+    nav ul li{
+        display: block;
+        margin: 10px 0;
     }
 
-    .footer{
-        height: auto;
+    .ff{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footermain{
+        width: 100%;
+    }
+
+    .footerleft,
+    .footercenter,
+    .footerright{
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
     }
 }
