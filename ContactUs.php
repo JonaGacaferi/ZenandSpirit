@@ -22,7 +22,7 @@
                     <li><a href="loginform.php">Log In</a></li>
                     <li><a href="YogaClasses.php">Yoga Classes</a></li>
                     <li><a href="Meditation.php">Meditation Classes</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="#">Products</a></li>
                 </ul>
             </nav>
         </div>
@@ -69,7 +69,7 @@
             <div class="footercenter">
                 <p>Help</p>
                 <p>Support</p>
-                <p>Contact</p>
+                <p><a href="ContactUs.php">Contact Us</a></p>
             </div>
             <div class="footerright">
                 <p>Terms of use</p>

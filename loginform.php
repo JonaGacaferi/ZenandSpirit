@@ -27,6 +27,7 @@
         <li><a href="loginform.php">Log In</a></li>
         <li><a href="YogaClasses.php">Yoga Classes</a></li>
         <li><a href="Meditation.php">Meditation Classes</a></li>
+        <li><a href="#">Products</a></li>
       </ul>
     </nav>
   </div>

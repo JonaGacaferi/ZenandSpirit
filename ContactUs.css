@@ -64,8 +64,9 @@ img{
 .logo{
     color: #333;
     margin-left: 25px;
+    margin-bottom: 20px;
 }
-  
+
 .logo :hover{
     color: #333;
     transition-duration: 0.3s;
@@ -262,6 +263,11 @@ footer{
     font-size: 15px;
     color: #c3c3c3;
 }
+
+.footercenter p a{
+    text-decoration: none;
+    color: #c3c3c3;
+}
   
 .footerright{
     display: flex;
@@ -280,7 +286,6 @@ footer{
     color: #a895b4;
 }
 
-/* Responsive styles for tablets (landscape) and phones */
 @media screen and (max-width: 1024px) {
     header {
         height: auto;
@@ -354,7 +359,6 @@ footer{
     }
 }
 
-/* Responsive styles for phones */
 @media screen and (max-width: 767px) {
     .logo {
         width: auto;
@@ -399,7 +403,7 @@ footer{
     .ff{
         width: 100%;
         justify-content: center;
-        margin-left: 55px;
+        margin-left: 40px;
         
     }
 

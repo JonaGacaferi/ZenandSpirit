@@ -15,6 +15,7 @@ header #h2_header{
     text-align: center;
     font-size: 30px;
     padding-bottom: 60px;
+    color: #434952;
 }
 
 header #h2_header, #p_header{
@@ -34,8 +35,9 @@ nav {
     justify-content: space-between;
     flex-wrap: wrap;
     position: fixed;
-    background-color: #7190a7;
+    background-color: #9dc19d;
     opacity: 0.9;
+    z-index: 2;
     
 }
 
@@ -89,13 +91,6 @@ nav ul li a:hover::after{
     width: 100%;
 }
 
-@media (max-width: 768px){
-    form{
-        width: 80%;
-        margin: 50px auto;
-    }
-}
-
 #container{
     display: flex;
     flex-wrap: wrap;
@@ -112,13 +107,14 @@ nav ul li a:hover::after{
     transition: transform 0.2s ease-in-out;
     justify-content: center;
     align-items: center;
-    background-color: #7190a7;
+    background-color: #a895b4;
+    margin: 10px;
 }
 
 .yogaClass img{
     max-width: 100%;
-    height: auto;
-    margin: 15px;
+    margin: 10px;
+    height: 185px;
 }
 
 .yogaClass :hover{
@@ -129,10 +125,12 @@ nav ul li a:hover::after{
     height: 150px;
     margin: 15px;
     object-fit: cover;
+    border-radius: 20px;
 }
 
 .details{
     padding: 15px;
+    color: #434952;
 }
 
 h2, p{
@@ -141,13 +139,15 @@ h2, p{
 
 footer{
     display: flex;
-    justify-content: space-between;
     background-color:  #5e778a;
     flex-direction: column;
     align-items: center;
     color: rgb(199, 148, 202);
-    height: 240px;
     padding: 20px;
+    width: 100%;
+    margin-top: auto;
+    justify-content: space-between;
+    height: 240px;
 }
   
 .f{
@@ -198,6 +198,11 @@ footer{
     font-size: 15px;
     color: #c3c3c3;
 }
+
+.footercenter p a{
+    text-decoration: none;
+    color: #c3c3c3;
+}
   
 .footerright{
     display: flex;
@@ -209,7 +214,6 @@ footer{
     color: #c3c3c3;
 }
   
-  
 .fundi{
     display: flex;
     justify-content: space-between;
@@ -217,135 +221,123 @@ footer{
     color: #a895b4;
 }
 
-@media (max-width: 1024px){
-    header #h2_header{
-        margin-top: 60px;
+@media screen and (max-width: 1024px){
+    header {
+        height: auto;
     }
 
-    nav{
-        text-align: right;
-        padding: 10px;
+    .logo {
+        width: auto;
     }
 
-    nav ul{
+    nav ul {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    footer {
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        margin-top: 10px;
+        background-color: #5e778a;
+        color: #c3c3c3;
+        box-sizing: border-box;
+        padding: 20px;
+        text-align: center;
     }
 
-    nav ul li{
-        display: block;
-        margin: 10px 0;
+    .footerleft{
+        margin-right: 100px;
     }
 
-    .logo{
-        width: 100%;
-        text-align: right;
-        margin-left: 0;
-    }
-
-    .yogaClass{
-        width: 100%;
-    }
-
-    .footerleft,
-    .footercenter,
     .footerright{
-        text-align: center;
-    }
-}
-
-@media (min-width: 767px) and (max-width: 1023px){
-    header #h2_header{
-        margin-top: 40px;
-        font-size: 24px;
+        margin-left: 100px;
     }
 
-    .logo{
-        font-size: 18px;
+    .ff{
+        margin-right: 60px;
     }
 
-    nav{
-        text-align: center;
-        padding: 10px;
+    .ff img {
+        height: 30px;
+        width: 30px;
+        margin-right: 10px;
     }
 
-    nav ul{
-        width: 100%;
+    .fundi{
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 10px;
-    }
-
-    .yogaClass{
         width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        color: #a895b4;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .logo {
+        width: auto;
     }
 
-    nav ul li{
-        display: block;
-        margin: 10px 0;
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer {
+        width: 100%;
+        background-color: #5e778a;
+        color: #c3c3c3;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .links{
+        margin-left: 100px;
     }
 
     .ff{
         width: 100%;
         justify-content: center;
+        margin-left: 40px;
+        
     }
 
-    .footermain{
-        width: 100%;
+    .ff img {
+        height: 30px;
+        width: 30px;
+        margin: 0 0 0 10px;
     }
 
-    .footerleft,
-    .footercenter,
-    .footerright{
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-    }
-}
-
-@media (max-width: 767px){
-    header #h2_header{
-        margin-top: 40px;
-        font-size: 24px;
-    }
-
-    .logo{
-        font-size: 18px;
-    }
-
-    nav{
-        text-align: center;
-        padding: 10px;
-    }
-
-    nav ul{
-        width: 100%;
+    .fundi{
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 10px;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        color: #a895b4;
     }
+}
 
+@media screen and (max-width: 600px){
     .yogaClass{
-        width: 100%;
+        width: 250px;
     }
 
-    nav ul li{
-        display: block;
-        margin: 10px 0;
+    .yogaClass img{
+        height: 150px;
     }
 
-    .ff{
-        width: 100%;
-        justify-content: center;
+    footer{
+        height: auto;
     }
 
-    .footermain{
-        width: 100%;
+    .f h2,
+    .f p,
+    .ff,
+    .ff img{
+        margin-bottom: 15px;
     }
 
     .footerleft,
@@ -353,6 +345,11 @@ footer{
     .footerright{
         width: 100%;
         text-align: center;
-        margin: 10px 0;
+        margin-bottom: 15px;
+    }
+
+    .footercenter p,
+    .footerright p{
+        margin-bottom: 20px;
     }
 }
