@@ -51,8 +51,8 @@
 
     <footer>
         <div class="f">
-            <h2>About Our Page</h2>
-            <h2>Our Links</h2>
+            <h2 class="about">About Our Page</h2>
+            <h2 class="links">Our Links</h2>
             <div class="ff" style="color: #434952">
                 <a href="https://www.facebook.com/"><img src="facebook_logo.png" alt="" /></a>
                 <a href="https://www.instagram.com/"><img src="instagram_logo.png" alt="" /></a>

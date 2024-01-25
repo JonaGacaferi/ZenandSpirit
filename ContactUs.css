@@ -62,7 +62,6 @@ img{
 }
 
 .logo{
-    width: 710px;
     color: #333;
     margin-left: 25px;
 }
@@ -281,23 +280,8 @@ footer{
     color: #a895b4;
 }
 
-/* Add this at the end of your existing CSS */
-
-/* Common styles for both tablets and phones */
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    background-color: #7190a7;
-}
-
-nav ul li {
-    margin: 10px;
-}
-
-/* Responsive styles for tablets (landscape) */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+/* Responsive styles for tablets (landscape) and phones */
+@media screen and (max-width: 1024px) {
     header {
         height: auto;
     }
@@ -307,33 +291,66 @@ nav ul li {
     }
 
     nav ul {
-        flex-direction: row; /* Revert to horizontal layout */
-        justify-content: space-around; /* Add space between nav items */
+        flex-direction: row;
+        justify-content: space-around;
     }
 
     .main-content {
-        flex-direction: column-reverse; /* Reverse the order of main content items */
+        flex-direction: column;
+        align-items: center;
     }
 
     .contact-form {
-        width: 100%;
-        margin-bottom: 20px; /* Add margin between contact form and photo */
+        width: 80%;
+        margin-bottom: 20px;
+        margin: 0 auto 20px;
+    }
+
+    .left-section{
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 
     .left-section img {
         width: 100%;
+        margin-right: 20px;
     }
 
     footer {
         width: 100%;
-        background-color: #5e778a; /* Set background color for the whole surface of the footer */
+        background-color: #5e778a;
         color: #c3c3c3;
+        box-sizing: border-box;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .footerleft{
+        margin-right: 100px;
+    }
+
+    .footerright{
+        margin-left: 100px;
+    }
+
+    .ff{
+        margin-right: 60px;
     }
 
     .ff img {
         height: 30px;
         width: 30px;
-        margin-right: 10px; /* Add margin between logo images */
+        margin-right: 10px;
+    }
+
+    .fundi{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        color: #a895b4;
     }
 }
 
@@ -346,27 +363,59 @@ nav ul li {
     nav ul {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
 
     .main-content {
-        flex-direction: column-reverse;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-section,
+    .contact-form{
+        width: 80%;
+        margin: 0 auto 20px;
     }
 
     .contact-form,
     .left-section img {
         width: 100%;
-        margin-bottom: 20px; /* Add margin between contact form and photo */
+        margin-bottom: 20px;
+        margin: 0 auto 20px;
     }
 
     footer {
         width: 100%;
         background-color: #5e778a;
         color: #c3c3c3;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .links{
+        margin-left: 100px;
+    }
+
+    .ff{
+        width: 100%;
+        justify-content: center;
+        margin-left: 55px;
+        
     }
 
     .ff img {
         height: 30px;
         width: 30px;
-        margin-right: 10px;
+        margin: 0 0 0 10px;
+    }
+
+    .fundi{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        color: #a895b4;
     }
 }
