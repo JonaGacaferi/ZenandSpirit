@@ -1,0 +1,315 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  list-style: none;
+  scroll-padding-top: 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+body,
+footer {
+  overflow-x: hidden;
+  background: #ede9ee;
+}
+
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 1px 4px #958997;
+  width: 100%;
+  background-size: cover;
+  z-index: 100;
+}
+
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #9dc19d;
+  opacity: 0.9;
+  z-index: 3;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.navbar{
+  max-width: 1500px;
+  margin: auto;
+  width: 100%;
+}
+
+img{
+  width: 100%;
+}
+
+
+.logo1 {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  height: 40px;
+  width: 50px;
+}
+
+.logo-img {
+  margin-left: 25px;
+  max-height: 50px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 10px;
+}
+
+nav ul li a {
+  color: #7190a7;
+  text-decoration: none;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background: #7190a7;
+  position: absolute;
+  transition-duration: 0.3s;
+  bottom: -5px;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+
+section {
+  padding: 64px 0 48px;
+}
+
+
+section .product-title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+
+#login-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+}
+
+#login-container h2 {
+  text-align: center;
+  color: #6a5acd;
+}
+
+#login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+#login-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+#login-form button {
+  background-color: #87ceeb;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+.product-container{
+ margin-top: 2rem;
+}
+
+.shopping {
+  display: grid;
+  flex-wrap: wrap;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit,minmax(220px,auto));
+  gap: 30px;
+  padding: 20px;
+}
+
+
+.product-box {
+  position: relative;
+  height: 300px;
+}
+
+.product-box:hover {
+  border: 2px solid lavender; /* Keep border consistent */
+  background-color: #dfd7e0;
+  border-radius: 5%;
+  transition-duration: 0.4s;
+  padding: 8px;
+}
+
+
+.product-images{
+  height:160px; 
+  width:252px;
+  margin-bottom: 8px;
+}
+
+
+#titulli-prod{
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform:uppercase ;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+
+box-icon {
+  font-size: 24px;
+  color: #6a5acd; 
+}
+
+/*responiviteti*/
+body img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.cart{
+position: fixed;
+top: 0;
+width: 360px;
+right: 0;
+min-height: 100vh;
+padding: 20px;
+background: var(--bg-color);
+
+}
+.add-cart{
+  position: absolute;
+  bottom: 0 ;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+  color: rgb(245, 219, 247);
+  background: rgb(165, 113, 152);
+}
+
+.add-cart:hover{
+  background: rgb(211, 167, 206);
+}
+
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-content: end;
+  background-color: #5e778a;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(199, 148, 202);
+  height: 200px;
+  padding: 0;
+}
+
+.f{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 19px;
+  width: 70%;
+  font-weight: bold;
+
+}
+
+.ff{
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+  height: 10%;
+
+}
+
+.ff img{
+  height: 30px;
+  width: 30px;
+
+}
+
+.footermain{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+
+.footerleft{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  font-size: 15px;
+  
+}
+
+.footercenter{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 15px;
+  
+  
+}
+
+.footerright{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 10%;
+  width: 150px;
+  font-size: 15px;
+  
+}
+
+.fundi{
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+}
+
+

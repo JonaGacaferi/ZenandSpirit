@@ -19,7 +19,7 @@
                 <li><a href="loginform.php">Log In</a></li>
                 <li><a href="YogaClasses.php">Yoga Classes</a></li>
                 <li><a href="Meditation.php">Meditation Classes</a></li>
-                <li><a href="#">Products</a></li>
+                <li><a href="TranquilGoods.php">TranquilGoods</a></li>
             </ul>
         </nav>
     </div>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="image-container">
-                <img src="meditation3.jpg" alt="Meditation foto 3">
+                <img src="xampp\htdocs\ZenandSpirit\img_Jona\meditation3.jpg" alt="Meditation foto 3">
                 <div class="text-meditation-gallery">
                     <h2>Mindful Meditation for Stress Relief</h2>
 
@@ -119,7 +119,7 @@
         <div class="footercenter" style="color: #c3c3c3">
             <p>Help</p>
             <p>Support</p>
-            <p><a href="ContactUs.php" style="text-decoration: none; color: #c3c3c3">Contact Us</a></p>
+            <p>Contact</p>
         </div>
         <div class="footerright" style="color: #c3c3c3">
             <p>Terms of use</p>
