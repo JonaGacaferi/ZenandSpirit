@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+include("connection.php");
+include("function.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +42,13 @@
   <form onsubmit="return validateForm()">
     <div class="loginForm">
       <h1>LOG IN</h1>
+
+      <label for="Username">Username</label>
+      <input type="text" id="text" name="text" required />
+      <span id="usernameError" class="error"></span>
+
+      <br>
+
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required />
       <span id="emailError" class="error"></span>
@@ -53,8 +67,17 @@
 
   <script>
     function validateForm() {
+      var username = document.getElementById("username").value;
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
+
+      if (username.trim() === "") {
+        document.getElementById("usernameError").innerText =
+          "Username cannot be empty";
+        return false;
+      } else {
+        document.getElementById("usernameError").innerText = "";
+      }
 
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
