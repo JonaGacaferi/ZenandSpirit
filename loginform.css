@@ -30,7 +30,6 @@ body, html{
 
 .menu{
     padding: 10px  ;
-   
 }
 
 nav {
@@ -97,15 +96,13 @@ nav ul li a:hover::after{
     width: 100%;
 }
 
-
-
 form{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 450px;
-    width: 50%;
+    width: 80%;
     margin: 50px auto;
     padding: 30px;
     border-radius: 8px;
@@ -173,63 +170,14 @@ a{
     color: #333;
 }
 
-@media (max-width: 992px){
-    .header{
-        padding: 1.3rem 5%;
-    }
-}
-
-@media (max-width: 768px){
-    .icons{
-        display: inline-flex;
+@media only screen and (max-width: 768px) {
+    .logo {
+        width: auto;
     }
 
-    #check:checked~.icons #menu_icon{
-        display: none;
-    }
-
-    .icons #close_icon{
-        display: none;
-    }
-
-    #check:checked~.icons #close_icon{
-        display: block;
-    }
-
-    .navbar{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 0;
-        background: rgba(0, 0, 0, .1);
-        backdrop-filter: blur(50px);
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
-        overflow: hidden;
-        transition: .3s ease;
-    }
-
-    #check:checked~.navbar{
-        height: 17.7rem;
-    }
-
-    .navbar a{
-        display: block;
-        font-size: 1.1rem;
-        margin: 1.5rem 0;
-        text-align: center;
-        transform: translateY(-50px);
-        opacity: 0;
-        transition: .3s ease;
-    }
-
-    #check:checked~.navbar a{
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    form{
-        width: 80%;
-        margin: 50px auto;
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }

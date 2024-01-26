@@ -51,6 +51,7 @@
           to meet your unique needs.
         </p>
 
+
         <button class="buttons-flex-box">Learn More</button>
       </div>
       <div class="kolonat">
@@ -77,7 +78,12 @@
     <video id="bcgr-vid" autoplay loop muted>
       <source src="video3.mp4" type="video/mp4">
     </video>
+    <video id="bcgr-vid" autoplay loop muted>
+      <source src="video3.mp4" type="video/mp4">
+    </video>
 
+    <div class="text-1">
+      <h2 id="h2-1">Creating Your Sacred Space</h2>
     <div class="text-1">
       <h2 id="h2-1">Creating Your Sacred Space</h2>
 
@@ -85,7 +91,13 @@
         We invite you to explore the ancient practices of meditation and yoga,<br>
         guiding you toward a path of holistic well-being and inner peace.</p>
     </div>
+      <p id="p1">Find tranquility and balance as you embark on a journey of self-discovery with Zen & Spirit.<br>
+        We invite you to explore the ancient practices of meditation and yoga,<br>
+        guiding you toward a path of holistic well-being and inner peace.</p>
+    </div>
 
+    <div class="text-2">
+      <h2 id="h2-2">Our Vision: Nurturing Mind, Body, and Spirit</h2>
     <div class="text-2">
       <h2 id="h2-2">Our Vision: Nurturing Mind, Body, and Spirit</h2>
 
@@ -96,7 +108,19 @@
     </div>
     <div class="text-3">
       <h2 id="h2-3">Meditation: A Journey Inward</h2>
+      <p id="p2"> At Zen & Spirit, we believe in the transformative power of mindfulness<br>
+        and the profound connection between mind, body, and spirit.<br>
+        Our mission is to provide a sacred space for you to cultivate <br>
+        a harmonious and balanced life through the timeless practices of meditation and yoga.</p>
+    </div>
+    <div class="text-3">
+      <h2 id="h2-3">Meditation: A Journey Inward</h2>
 
+      <p id="p3">Meditation is the art of cultivating a quiet mind and a centered spirit.<br>
+        By dedicating time to stillness and mindfulness, <br>
+        we can observe our thoughts without attachment and let go of unnecessary stress. </p>
+    </div>
+  </section>
       <p id="p3">Meditation is the art of cultivating a quiet mind and a centered spirit.<br>
         By dedicating time to stillness and mindfulness, <br>
         we can observe our thoughts without attachment and let go of unnecessary stress. </p>
@@ -117,6 +141,7 @@
   <div class="footermain">
     <div class="footerleft">
       <p> Harmonize Your Existence: Immerse Yourself in Tranquility with our Guided Yoga and Meditation Experiences.</p>
+      <p> Harmonize Your Existence: Immerse Yourself in Tranquility with our Guided Yoga and Meditation Experiences.</p>
     </div>
     <div class="footercenter">
       <p>Help</p>
@@ -126,12 +151,19 @@
     <div class="footerright">
       <p>Terms of use</p>
       <p>Privacy Policy</p>
+    <div class="footerright">
+      <p>Terms of use</p>
+      <p>Privacy Policy</p>
     </div>
+  </div>
+  <div class="fundi">
   </div>
   <div class="fundi">
     <p>© 2023 Zen & Spirit. All rights reserved.</p>
     <p>Designed by B&J</p>
   </div>
+  </div>
 </footer>
+
 
 </html>

@@ -22,6 +22,7 @@
           <li><a href="loginform.php">Log In</a></li>
           <li><a href="YogaClasses.php">Yoga Classes</a></li>
           <li><a href="Meditation.php">Meditation Classes</a></li>
+          <li><a href="#">Products</a></li>
         </ul>
       </nav>
     </div>
@@ -183,7 +184,7 @@
     </div>
 
     <div class="yogaClass">
-      <img class="imageClass" src="img/class20.jpg" alt="Yoga Class 20" />
+      <img class="imageClass" style="width: 280px;" src="img/class20.jpg" alt="Yoga Class 20" />
       <div class="details">
         <h2>Balanced Body</h2>
         <p>14 days - 10 classes</p>
@@ -226,8 +227,8 @@
 
   <footer>
     <div class="f">
-      <h2>About Our Page</h2>
-      <h2>Our Links</h2>
+      <h2 class="about">About Our Page</h2>
+      <h2 class="links">Our Links</h2>
       <div class="ff" style="color: #434952">
         <a href="https://www.facebook.com/"><img src="facebook_logo.png" alt="" /></a>
         <a href="https://www.instagram.com/"><img src="instagram_logo.png" alt="" /></a>
@@ -244,7 +245,7 @@
       <div class="footercenter">
         <p>Help</p>
         <p>Support</p>
-        <p>Contact</p>
+        <p><a href="ContactUs.php" style="text-decoration: none; color: #c3c3c3;">Contact Us</a></p>
       </div>
       <div class="footerright">
         <p>Terms of use</p>
