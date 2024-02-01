@@ -15,15 +15,16 @@ include("function.php");
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="products.css">
     <link rel="icon" href="yogalogo.png" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-      <title>TranquilGoods</title>
+    <title>TranquilGoods</title>
 </head>
-
+<body>
 
 <header>
         <div class="menu">
@@ -34,7 +35,11 @@ include("function.php");
                 </div>
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="loginform.php">Log In</a></li>
+                    <?php if (isset($_SESSION['user_id'])) : ?>
+                        <li><a href="logout.php">LogOut</a></li>
+                    <?php else : ?>
+                        <li><a href="loginform.php">Log In</a></li>
+                    <?php endif; ?>
                     <li><a href="YogaClasses.php">Yoga Classes</a></li>
                     <li><a href="Meditation.php">Meditation Classes</a></li>
                     <li><a href="TranquilGoods.php">TranquilGoods</a></li>
@@ -43,43 +48,34 @@ include("function.php");
         </div>
     </header>
 
-    <body>
-        
-
+    <div id="login-container">
+        <h2>Login to see available products </h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
 
 <section id="product-container" style="display: none;">
     <h2 class="product-title">Yoga & Meditation Equipment</h2>
-    <!-- Cart Icon -->
-<!-- Cart Icon -->
-<div id="cart-icon">
-    <img src="img_jona/cart-icon.png" alt="Cart Icon">
-</div>
-
-
-<!-- Cart Popup -->
-<div id="cart-popup">
-    <div id="cart-items">
-        <!-- Cart items will be displayed here -->
-    </div>
-    <div id="total-price">Total: $0.00</div>
-</div>
-
-
+    <div class="cart"></div>
     <div class="shopping">
 
     <div class="product-box">
         <img src="img_jona/product1.jpg" alt=" "  class="product-images"  >
         <h3 id="titulli-prod">Premium Yoga Mat</h3>
         <p>Practice with our high-quality yoga mat.</p>
-        <span class="price">$22.49</span>
-        <i class='bx bx-shopping-bag add-cart add-to-cart'></i>
-
+        <span class="price">$29.99</span>
+        <i class='bx bx-shopping-bag add-cart'></i>
     </div>
     <div class="product-box">
         <img src="img_jona/product2.jpg" alt=" "  class="product-images">
-        <h3 id="titulli-prod"> Yoga Blocks to stretch </h3>
+        <h3 id="titulli-prod"> Yoga Blocks for stretches </h3>
         <p>Elevate your practice </p>
-        <span class="price">$19.99</span>
+        <span class="price">$29.99</span>
         <i class='bx bx-shopping-bag add-cart'></i>
     </div>
     <div class="product-box">
@@ -93,7 +89,7 @@ include("function.php");
         <img src="img_jona/product3.jpg" alt=" "  class="product-images">
         <h3 id="titulli-prod">Premium Yoga Mat</h3>
         <p>Experience ultimate mat comfort </p>
-        <span class="price">$16.99</span>
+        <span class="price">$29.99</span>
         <i class='bx bx-shopping-bag add-cart'></i>
     </div>
 
@@ -101,7 +97,7 @@ include("function.php");
         <img src="img_jona/product3.jpg" alt=" "  class="product-images">
         <h3 id="titulli-prod">Premium Yoga Mat</h3>
         <p>Experience ultimate mat comfort </p>
-        <span class="price">$9.99</span>
+        <span class="price">$29.99</span>
         <i class='bx bx-shopping-bag add-cart'></i>
     </div>
 
@@ -109,7 +105,7 @@ include("function.php");
         <img src="img_jona/product3.jpg" alt=" "  class="product-images">
         <h3 id="titulli-prod">Premium Yoga Ball</h3>
         <p>ZenBall: Balance Your Yoga Journey</p>
-        <span class="price">$25.99</span>
+        <span class="price">$29.99</span>
         <i class='bx bx-shopping-bag add-cart'></i>    
     </div>
 
@@ -117,27 +113,27 @@ include("function.php");
         <img src="img_jona/product3.jpg" alt=" "  class="product-images">
         <h3 id="titulli-prod">Premium Yoga Ball</h3>
         <p>ZenBall: Balance Your Yoga Journey</p>
-        <span class="price">$5.99</span>
+        <span class="price">$29.99</span>
         <i class='bx bx-shopping-bag add-cart'></i>
     </div>
     <div class="product-box">
         <img src="img_jona/product3.jpg" alt=" "  class="product-images">
         <h3 id="titulli-prod">Premium Yoga Ball</h3>
         <p>ZenBall: Balance Your Yoga Journey</p>
-        <span class="price">$12.49</span>
+        <span class="price">$29.99</span>
         <i class='bx bx-shopping-bag  add-cart'></i>
     </div>
     <div class="product-box">
         <img src="img_jona/product3.jpg" alt=" "  class="product-images">
         <h3 id="titulli-prod">Premium Yoga Ball</h3>
         <p>ZenBall: Balance Your Yoga Journey</p>
-        <span class="price">$20.99</span>
+        <span class="price">$29.99</span>
         <i class='bx bx-shopping-bag add-cart'></i>
     </div>
 </div>
 </section>
 
-<script src="products.js"></script>
+    <script src="products.js"></script>
 </body>
 <footer>
         <div class="f">
@@ -171,5 +167,6 @@ include("function.php");
             <p>Designed by B&J</p>
         </div>
 
-    </footer>
+
+</footer>
 </html>

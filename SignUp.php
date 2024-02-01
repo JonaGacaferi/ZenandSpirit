@@ -4,12 +4,38 @@ session_start();
 include("connection.php");
 include("function.php");
 
+$usernameError = $emailError = $passwordError = "";
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   //something was posted
   $user_name = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $confirmPassword = $_POST['confirmPassword'];
+
+  //check if the user exists
+  $check_query = "select * from users where user_name = '$user_name' or user_email = '$email' limit 1";
+  $check_result = mysqli_query($con, $check_query);
+
+  if ($check_result && mysqli_num_rows($check_result) > 0) {
+    //User or email already exists
+    echo '<script>alert("Username or email already taken. Please choose another!");</script>';
+  } else {
+    //Save to database
+    $user_id = random_num(20);
+    $query = "insert into users (user_id, user_name, user_email, password) values ('$user_id', '$user_name', '$email', '$password')";
+
+    if (mysqli_query($con, $query)) {
+      //Set session upon successful signup
+      $_SESSION['user_id'] = $user_id;
+
+      //Redirect to homepage
+      header("Location: homepage.php");
+      exit;
+    } else {
+      //Handle database error
+      echo '<script>alert("Error signing up. Please try again!");</script>';
+    }
+  }
 }
 ?>
 
@@ -34,36 +60,40 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </div>
         <ul>
           <li><a href="homepage.php">Home</a></li>
-          <li><a href="loginform.php">Log In</a></li>
+          <?php if (isset($_SESSION['user_id'])) : ?>
+            <li><a href="logout.php">LogOut</a></li>
+          <?php else : ?>
+            <li><a href="loginform.php">Log In</a></li>
+          <?php endif; ?>
           <li><a href="YogaClasses.php">Yoga Classes</a></li>
           <li><a href="Meditation.php">Meditation Classes</a></li>
-          <li><a href="#">Products</a></li>
+          <li><a href="TranquilGoods.php">TranquilGoods</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <form onsubmit="return validateForm()">
+  <form method="post" onsubmit="return validateForm()">
     <div class="loginForm">
       <h1>SIGN UP</h1>
 
-      <input type="text" id="username" name="username" placeholder="Username" required />
-      <span id="usernameError" class="error"></span>
+      <input type="text" id="username" name="username" placeholder="Username" />
+      <span id="usernameError" class="error" style="color: red;"><?php echo $usernameError; ?></span>
 
       <br />
 
-      <input type="email" id="email" name="email" placeholder="Email Address" required />
-      <span id="emailError" class="error"></span>
+      <input type="email" id="email" name="email" placeholder="Email Address" />
+      <span id="emailError" class="error" style="color: red;"><?php echo $emailError; ?></span>
 
       <br />
 
-      <input type="password" id="password" name="password" placeholder="Create Password" required />
-      <span id="passwordError" class="error"></span>
+      <input type="password" id="password" name="password" placeholder="Create Password" />
+      <span id="passwordError" class="error" style="color: red;"><?php echo $passwordError; ?></span>
 
       <br />
 
-      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
-      <span id="confirmPasswordError" class="error"></span>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
+      <span id="confirmPasswordError" class="error" style="color: red;"></span>
 
       <div class="button">
         <a href="#"><button class="login">SIGN UP</button></a>
