@@ -9,20 +9,24 @@
     <link rel="icon" href="yogalogo.png" type="image/x-icon">
 </head>
 <header>
-    <div class="menu">
-        <nav class="navbar">
-            <img src="yogalogo.png" height="50px" class="logo1">
+    <<div class="menu">
+            <nav>
+                <div class="logo1">
+                    <img src="yogalogo.png" height="40px" class="logo1" />
+                    <p class="logo">Zen & Spirit</p>
+                </div>
+                <ul>
+                    <li><a href="homepage.php">Home</a></li>
+                    <li><a href="loginform.php">Log In</a></li>
+                    <li><a href="YogaClasses.php">Yoga Classes</a></li>
+                    <li><a href="Meditation.php">Meditation Classes</a></li>
+                    <li><a href="TranquilGoods.php">TranquilGoods</a></li>
+                </ul>
+            </nav>
+        </div>
 
-            <p class="logo">Zen & Spirit</p>
-            <ul>
-                <li><a href="homepage.php">Home</a></li>
-                <li><a href="loginform.php">Log In</a></li>
-                <li><a href="YogaClasses.php">Yoga Classes</a></li>
-                <li><a href="Meditation.php">Meditation Classes</a></li>
-                <li><a href="TranquilGoods.php">TranquilGoods</a></li>
-            </ul>
-        </nav>
-    </div>
+
+    <p id="p-header"> Immerse your consciousness in a state of deep peace</p>
 </header>
 
 <body>
@@ -35,7 +39,7 @@
         </div>
         <div class="meditation-gallery">
             <div class="image-container">
-                <img src="foto1.jpg.jpg" alt="Meditation foto 1">
+                <img src="img_Jona/foto1.jpg" alt="Meditation foto 1">
 
                 <div class="text-meditation-gallery">
                     <h2>Discover Inner Peace Through Meditation</h2>
@@ -46,7 +50,7 @@
                 </div>
             </div>
             <div class="image-container">
-                <img src="xampp\htdocs\ZenandSpirit\img_Jona\meditation3.jpg" alt="Meditation foto 3">
+                <img src="img_Jona/meditation3.jpg" alt="Meditation foto 3">
                 <div class="text-meditation-gallery">
                     <h2>Mindful Meditation for Stress Relief</h2>
 
@@ -57,7 +61,7 @@
                 </div>
             </div>
             <div class="image-container">
-                <img src="meditation4.jpg" alt="Meditation foto 4">
+                <img src="img_Jona/meditation4.jpg" alt="Meditation foto 4">
                 <div class="text-meditation-gallery">
                     <h2>Serenity Within: Guided Meditation Sessions</h2>
 
@@ -72,11 +76,11 @@
     <script>
         var i = 0;
         var imgArray = [
-            "foto1.jpg",
-            "foto2.jpg",
-            "foto3.jpg",
-            "foto4.jpg",
-            "foto5.jpg",
+            "img_Jona/foto10.jpg",
+            "img_Jona/foto2.jpg",
+            "img_Jona/foto3.jpg",
+            "img_Jona/foto4.jpg",
+            "img_Jona/foto5.jpg",
         ];
 
         function nextImg() {

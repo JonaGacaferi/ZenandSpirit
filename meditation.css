@@ -10,10 +10,19 @@
 }
 
 header{
-   background-image: url(foto8.jpg.jpg) ;
+   background-image: url(img_Jona/foto9.jpg) ;
     height: 100vh;
     width: 100%;
     background-size: cover;
+}
+
+#p-header{
+  text-align: center;
+ font-weight: 700;
+ padding: 90px;
+ padding-top: 270px;
+  color: #c3c3c3;
+  font-size: xx-large;
 }
 
 nav {
@@ -28,6 +37,7 @@ nav {
   background-color:#9dc19d;
   opacity: 0.9;
   z-index: 3;
+  
 
 }
 
@@ -36,9 +46,11 @@ img{
 }
 
 .logo{
-  width: 710px;
+  
   color: #7190a7;
   margin-left: 25px;
+  font-weight: 600;
+ 
 }
 
 .logo :hover{
@@ -46,10 +58,10 @@ img{
   transition-duration: 0.3s;
 }
 .logo1{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav  ul li {
@@ -114,6 +126,7 @@ body .slide-pics{
   width: 100%;
   height: 100%;
   border-radius: 8px;
+  margin-left: 0px;
 }
 
 .next-button,
@@ -127,12 +140,13 @@ body .slide-pics{
 
 .next-button {
   right: 0;
-  background-image: url(nextbutton.png);
+  background-image: url(img_Jona/nextbutton.png);
+  
 }
 
 .prev-button {
   left: 0;
-  background-image: url(prevbutton.png);
+  background-image: url(img_Jona/prevbutton.png);
 }
 
 
@@ -270,4 +284,29 @@ footer{
   display: flex;
   justify-content: space-between;
   width: 900px;
+}
+
+
+@media screen and (max-width: 768px) {
+  /* Adjustments for smaller screens */
+  header {
+    background-size: contain;
+  }
+
+  #p-header {
+    padding: 30px;
+    padding-top: 150px;
+    font-size: large;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .slide-pics,
+  .meditation-gallery {
+    width: 90%;
+    margin: auto;
+  }
 }
