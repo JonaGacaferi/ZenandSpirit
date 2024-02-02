@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 include("connection.php");
 ?>
 
@@ -16,10 +14,11 @@ include("connection.php");
 </head>
 <header>
   <div class="menu">
-    <nav class="navbar">
-      <img src="yogalogo.png" height="50px" class="logo1" />
-
-      <p class="logo">Zen & Spirit</p>
+    <nav>
+      <div class="logo1">
+        <img src="yogalogo.png" height="40px" class="logo1" />
+        <p class="logo">Zen & Spirit</p>
+      </div>
       <ul>
         <li><a href="homepage.php">Home</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
@@ -54,7 +53,7 @@ include("connection.php");
     </div>
     <div class="flex-box">
       <div class="kolonat">
-        <img src="xampp\htdocs\ZenandSpirit\img_Jona\foto1.jpg" height="300px" width="300px" />
+        <img src="img_Jona/foto1.jpg" height="300px" width="300px" />
         <h4>Featured Classes</h4>
         <p>
           Explore a variety of classes tailored <br />
@@ -65,7 +64,7 @@ include("connection.php");
         <button class="buttons-flex-box">Learn More</button>
       </div>
       <div class="kolonat">
-        <img src="xampp\htdocs\ZenandSpirit\img_Jona\foto2.jpg" height="300px" width="300px">
+        <img src="img_Jona/foto2.jpg" height="300px" width="300px">
         <h4>Join Us for a Session</h4>
         <p>Connect with like-minded individuals,
           <br> and nurture your mind and body
@@ -86,10 +85,7 @@ include("connection.php");
 
   <section class="video1">
     <video id="bcgr-vid" autoplay loop muted>
-      <source src="video3.mp4" type="video/mp4">
-    </video>
-    <video id="bcgr-vid" autoplay loop muted>
-      <source src="video3.mp4" type="video/mp4">
+      <source src="img_Jona/video3.mp4" type="video/mp4">
     </video>
 
     <div class="text-1">
@@ -101,16 +97,10 @@ include("connection.php");
           We invite you to explore the ancient practices of meditation and yoga,<br>
           guiding you toward a path of holistic well-being and inner peace.</p>
       </div>
-      <p id="p1">Find tranquility and balance as you embark on a journey of self-discovery with Zen & Spirit.<br>
-        We invite you to explore the ancient practices of meditation and yoga,<br>
-        guiding you toward a path of holistic well-being and inner peace.</p>
-    </div>
 
-    <div class="text-2">
-      <h2 id="h2-2">Our Vision: Nurturing Mind, Body, and Spirit</h2>
+
       <div class="text-2">
         <h2 id="h2-2">Our Vision: Nurturing Mind, Body, and Spirit</h2>
-
         <p id="p2"> At Zen & Spirit, we believe in the transformative power of mindfulness<br>
           and the profound connection between mind, body, and spirit.<br>
           Our mission is to provide a sacred space for you to cultivate <br>
@@ -118,10 +108,9 @@ include("connection.php");
       </div>
       <div class="text-3">
         <h2 id="h2-3">Meditation: A Journey Inward</h2>
-        <p id="p2"> At Zen & Spirit, we believe in the transformative power of mindfulness<br>
-          and the profound connection between mind, body, and spirit.<br>
-          Our mission is to provide a sacred space for you to cultivate <br>
-          a harmonious and balanced life through the timeless practices of meditation and yoga.</p>
+        <p id="p3">Meditation is the art of cultivating a quiet mind and a centered spirit.<br>
+          By dedicating time to stillness and mindfulness, <br>
+          we can observe our thoughts without attachment and let go of unnecessary stress. </p>
       </div>
       <div class="text-3">
         <h2 id="h2-3">Meditation: A Journey Inward</h2>
@@ -131,11 +120,7 @@ include("connection.php");
           we can observe our thoughts without attachment and let go of unnecessary stress. </p>
       </div>
   </section>
-  <p id="p3">Meditation is the art of cultivating a quiet mind and a centered spirit.<br>
-    By dedicating time to stillness and mindfulness, <br>
-    we can observe our thoughts without attachment and let go of unnecessary stress. </p>
-  </div>
-  </section>
+
 
 </body>
 <footer>
@@ -150,7 +135,7 @@ include("connection.php");
   </div>
   <div class="footermain">
     <div class="footerleft">
-      <p> Harmonize Your Existence: Immerse Yourself in Tranquility with our Guided Yoga and Meditation Experiences.</p>
+
       <p> Harmonize Your Existence: Immerse Yourself in Tranquility with our Guided Yoga and Meditation Experiences.</p>
     </div>
     <div class="footercenter">
@@ -161,12 +146,6 @@ include("connection.php");
     <div class="footerright">
       <p>Terms of use</p>
       <p>Privacy Policy</p>
-      <div class="footerright">
-        <p>Terms of use</p>
-        <p>Privacy Policy</p>
-      </div>
-    </div>
-    <div class="fundi">
     </div>
     <div class="fundi">
       <p>© 2023 Zen & Spirit. All rights reserved.</p>
