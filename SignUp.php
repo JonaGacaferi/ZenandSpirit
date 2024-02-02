@@ -1,40 +1,31 @@
 <?php
-session_start();
-
-include("connection.php");
-include("function.php");
-
-$usernameError = $emailError = $passwordError = "";
+include 'connection.php';
+include_once 'class/User.php';
+include_once 'class/UserRepository.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  //something was posted
-  $user_name = $_POST['username'];
+  $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $role = 'user';
 
-  //check if the user exists
-  $check_query = "select * from users where user_name = '$user_name' or user_email = '$email' limit 1";
-  $check_result = mysqli_query($con, $check_query);
-
-  if ($check_result && mysqli_num_rows($check_result) > 0) {
-    //User or email already exists
-    echo '<script>alert("Username or email already taken. Please choose another!");</script>';
+  if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirm'])) {
+    echo "Please fill all the fields!";
   } else {
-    //Save to database
-    $user_id = random_num(20);
-    $query = "insert into users (user_id, user_name, user_email, password) values ('$user_id', '$user_name', '$email', '$password')";
+    $user = new User(null, $username, $email, $password, $role);
+    $userRepository = new UserRepository();
+    $userRepository->insertUser($user);
+    header("Location: loginform.php");
+  }
 
-    if (mysqli_query($con, $query)) {
-      //Set session upon successful signup
-      $_SESSION['user_id'] = $user_id;
+  $user = new User(null, $username, $email, $password, $role);
+  $userRepository = new UserRepository();
 
-      //Redirect to homepage
-      header("Location: homepage.php");
-      exit;
-    } else {
-      //Handle database error
-      echo '<script>alert("Error signing up. Please try again!");</script>';
-    }
+  if ($userRepository->userExists($user->getUsername(), $user->getEmail())) {
+    echo "User with the given username or email already exists!";
+  } else {
+    $userRepository->insertUser($user);
+    header("Location: loginform.php");
   }
 }
 ?>
@@ -73,30 +64,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
   </header>
 
-  <form method="post" onsubmit="return validateForm()">
+  <form method="post" action="SignUp.php" onsubmit="validateForm(event)">
     <div class="loginForm">
       <h1>SIGN UP</h1>
 
       <input type="text" id="username" name="username" placeholder="Username" />
-      <span id="usernameError" class="error" style="color: red;"><?php echo $usernameError; ?></span>
+      <span id="usernameError" class="error"></span>
 
       <br />
 
       <input type="email" id="email" name="email" placeholder="Email Address" />
-      <span id="emailError" class="error" style="color: red;"><?php echo $emailError; ?></span>
+      <span id="emailError" class="error"></span>
 
       <br />
 
       <input type="password" id="password" name="password" placeholder="Create Password" />
-      <span id="passwordError" class="error" style="color: red;"><?php echo $passwordError; ?></span>
+      <span id="passwordError" class="error"></span>
 
       <br />
 
       <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
-      <span id="confirmPasswordError" class="error" style="color: red;"></span>
+      <span id="confirmPasswordError" class="error"></span>
+
+      <select class="type" name="user_type">
+        <option value="user">user</option>
+        <option value="admin">admin</option>
+      </select>
 
       <div class="button">
-        <a href="#"><button class="login">SIGN UP</button></a>
+        <button type="submit" class="login" name="submit">SIGN UP</button>
       </div>
       <p>
         Already part of the community? <a href="loginform.php">Log In</a>
@@ -105,6 +101,50 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   </form>
 
   <script>
+    function validateForm(event) {
+
+      let usernameInput = document.getElementById('username');
+      let usernameError = document.getElementById('usernameError');
+
+      let emailInput = document.getElementById('email');
+      let emailError = document.getElementById('emailError');
+
+      let passwordInput = document.getElementById('password');
+      let passwordError = document.getElementById('passwordError');
+
+      let confirmpasswordInput = document.getElementById('confirmPassword');
+      let confirmPasswordError = document.getElementById('confirmPasswordError');
+
+      let usernameRegex = /^[a-zA-Z0-9\-]+$/;;
+      let emailRegex = /^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\.[a-zA-Z]{2,4}$/;
+      let passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+      usernameError.innerText = '';
+      emailError.innerText = '';
+      passwordError.innerText = '';
+      confirmPasswordError.innerText = '';
+
+      if (!usernameRegex.test(usernameInput.value)) {
+        usernameError.innerText = 'Please enter a valid username!';
+        event.preventDefault();
+        return;
+      }
+      if (!emailRegex.test(emailInput.value)) {
+        emailError.innerText = 'Please enter a valid email!';
+        event.preventDefault();
+        return;
+      }
+      if (!passwordRegex.test(passwordInput.value)) {
+        passwordError.innerText = 'Please enter a valid password!';
+        return;
+      }
+      if (passwordInput.value !== confirmpasswordInput.value) {
+        confirmPasswordError.innerText = 'Password does not match!';
+        event.preventDefault();
+        return;
+      }
+    }
+    /*
     function validateForm() {
       var username = document.getElementById("username").value;
       var email = document.getElementById("email").value;
@@ -145,6 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       }
       return true;
     }
+    */
   </script>
 </body>
 

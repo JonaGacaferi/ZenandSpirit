@@ -2,7 +2,6 @@
 session_start();
 
 include("connection.php");
-include("function.php");
 
 ?>
 
@@ -18,23 +17,23 @@ include("function.php");
 </head>
 <header>
     <<div class="menu">
-            <nav>
-                <div class="logo1">
-                    <img src="yogalogo.png" height="40px" class="logo1" />
-                    <p class="logo">Zen & Spirit</p>
-                </div>
-                <ul>
-                    <li><a href="homepage.php">Home</a></li>
-                    <li><a href="loginform.php">Log In</a></li>
-                    <li><a href="YogaClasses.php">Yoga Classes</a></li>
-                    <li><a href="Meditation.php">Meditation Classes</a></li>
-                    <li><a href="TranquilGoods.php">TranquilGoods</a></li>
-                </ul>
-            </nav>
+        <nav>
+            <div class="logo1">
+                <img src="yogalogo.png" height="40px" class="logo1" />
+                <p class="logo">Zen & Spirit</p>
+            </div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li><a href="loginform.php">Log In</a></li>
+                <li><a href="YogaClasses.php">Yoga Classes</a></li>
+                <li><a href="Meditation.php">Meditation Classes</a></li>
+                <li><a href="TranquilGoods.php">TranquilGoods</a></li>
+            </ul>
+        </nav>
         </div>
 
 
-    <p id="p-header"> Immerse your consciousness in a state of deep peace</p>
+        <p id="p-header"> Immerse your consciousness in a state of deep peace</p>
 </header>
 
 <body>

@@ -2,54 +2,53 @@
 session_start();
 
 include("connection.php");
-include("function.php");
+include("Person.php");
+include("Admin.php");
+include("User.php");
 
 $usernameError = $emailError = $passwordError = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  // Something was posted
   $user_name = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  // Check if the user exists
-  $query = "select * from users where user_name = ? limit 1";
+  $user = new User($id, $name, $email, $password, $type, $dateAdded);
+  $admin = new Admin($id, $name, $email, $password, $type, $premissionLevel);
 
-  // Using prepared statement to prevent SQL injection
-  $stmt = mysqli_prepare($con, $query);
-  mysqli_stmt_bind_param($stmt, "s", $user_name);
-  mysqli_stmt_execute($stmt);
-  $result = mysqli_stmt_get_result($stmt);
-
-  // Check if a redirect parameter is present
   $redirect_page = isset($_GET['redirect']) ? $_GET['redirect'] : 'homepage';
 
-  if ($result) {
-    $user_data = mysqli_fetch_assoc($result);
+  //$user_data = getUserByUsername($user_name);
 
-    //Check if the user exists
-    if ($user_data) {
-      //Check if the email matches
-      if ($user_data['user_email'] == $email) {
-        //User exists, now check the password
-        if ($user_data['password'] == $password) {
-          $_SESSION['user_id'] = $user_data['user_id'];
+  if ($user_data) {
+    if ($user_data->email == $email) {
+      if ($user_data->password == $password) {
+        $_SESSION['user_id'] = $user_data->id;
+        header("Location: $redirect_page.php");
+        exit;
+      } else {
+        $passwordError = "Wrong password!";
+      }
+    } else {
+      $emailError = "Wrong email!";
+    }
+  } else {
+    //$admin_data = getAdminByUsername($user_name);
 
-          //Redirect to the specified page
-          header("Location: $redirect_page.php");
+    if ($admin_data) {
+      if ($admin_data->email == $email) {
+        if ($admin_data->password == $password) {
+          $_SESSION['admin_id'] = $admin_data->id;
+          header("Location: admin_dashboard.php");
           exit;
         } else {
-          //Email doen't match
           $passwordError = "Wrong password!";
         }
       } else {
-        //Email doesn't match
-        $emailError = "Wrong email!";
+        $emailError = "Wrong email";
       }
     } else {
-      //User not found in the database
       $usernameError = "User not found. Please sign up firs!";
-
       echo '<script>';
       echo 'alert("User not found. Please sign up first!");';
       echo 'window.location.href = "SignUp.php"';
