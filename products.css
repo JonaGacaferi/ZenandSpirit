@@ -8,9 +8,7 @@
 
  body , footer {
   overflow-x: hidden;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  background-color: #b4c5b4;
+  background-color: #f0bdd9;
 }
 
 header{
@@ -169,6 +167,8 @@ section .product-title {
   
 }
 
+
+
 .product-box p {
   padding: 10px;
   padding-bottom: 17px;
@@ -182,19 +182,12 @@ box-icon {
 }
 
 
-body img {
-  max-width: 100%;
-  height: auto;
-}
-
-
-
 .add-cart{
-  margin-left: 197px;
-  right: 0;
-  padding: 7px;
-  margin-bottom: 10px;
-  cursor: pointer;
+  background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
   color: rgb(245, 219, 247);
   background: rgb(165, 113, 152);
   
@@ -207,24 +200,73 @@ body img {
 
 #cart-popup {
   display: none;
-  position: fixed;
-  top: 50px;
-  right: 20px;
-  width: 300px;
-  background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e9bef1;
+    padding: 20px;
+    border: 1px solid #6b7ea1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    border-radius: 5%;
+    width: 500px;
+    height: 500px;
+}
+
+.product {
   border: 1px solid #ccc;
   padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 9999;
+  margin: 10px;
+  text-align: center;
 }
 
 #cart-items {
   max-height: 200px;
   overflow-y: auto;
+  margin-bottom: 15px;
 }
 
 .cart-item {
-  margin-bottom: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #777;
+}
+
+.checkout-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.checkout-btn:hover {
+  background-color: #0056b3;
+}
+
+.cart-content{
+  padding:10px;
+}
+
+.cart-content h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
 }
 
 #total-price {
@@ -236,7 +278,7 @@ body img {
 
 footer{
     display: flex;
-    background-color:  #5e778a;
+    background-color:  #75b4a1;
     flex-direction: column;
     align-items: center;
     color: rgb(199, 148, 202);
@@ -245,6 +287,8 @@ footer{
     margin-top: auto;
     justify-content: space-between;
     height: 240px;
+    padding-bottom: 0px;
+    margin-bottom: 0;
 }
   
 .f{
