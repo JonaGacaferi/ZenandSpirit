@@ -48,11 +48,11 @@ class AdminRepository
         return $admin;
     }
 
-    function updateAdmin($username, $email, $password)
+    function updateAdmin($username, $email, $password, $role)
     {
         $conn = $this->connection;
 
-        $sql = "UPDATE admin SET username = ?, email = ?, password = ?, type = ?, dateAdded = ?";
+        $sql = "UPDATE admin SET username = ?, email = ?, password = ? WHERE role = ?";
         $statement = $conn->prepare($sql);
         $statement->execute($username, $email, $password);
 

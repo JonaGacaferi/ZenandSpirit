@@ -2,28 +2,36 @@
 include 'connection.php';
 include_once 'class/User.php';
 include_once 'class/UserRepository.php';
+include_once 'class/Admin.php';
+include_once 'class/AdminRepository.php';
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  $username = $_POST['username'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $role = 'user';
-
-  if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirm'])) {
-    echo "Please fill all the fields!";
-  } else {
-    $user = new User(null, $username, $email, $password, $role);
-    $userRepository = new UserRepository();
-    $userRepository->insertUser($user);
-    header("Location: loginform.php");
-  }
-
-  $user = new User(null, $username, $email, $password, $role);
+function checkForErrors($name, $email, $password, $confirm, $user)
+{
   $userRepository = new UserRepository();
 
-  if ($userRepository->userExists($user->getUsername(), $user->getEmail())) {
-    echo "User with the given username or email already exists!";
+  if (empty($name) || empty($email) || empty($password) || empty($confirm)) {
+    return "Please fill all the fields!";
+  } elseif ($userRepository->userExists($user->getName(), $user->getEmail())) {
+    return "User with the given username or email already exists!";
+  }
+  return null;
+}
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  $name = $_POST['username'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $confirm = $_POST['confirmPassword'];
+  $role = $_POST['user_type'];
+
+  $user = new User($name, $email, $password, $role);
+
+  $error = checkForErrors($name, $email, $password, $confirm, $user);
+
+  if ($error) {
+    echo "<p class='error-message'>$error</p>";
   } else {
+    $userRepository = new UserRepository();
     $userRepository->insertUser($user);
     header("Location: loginform.php");
   }
@@ -68,6 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="loginForm">
       <h1>SIGN UP</h1>
 
+      <?php
+      if ($_SERVER['REQUEST_METHOD'] == "POST" && $error) {
+        echo "<p class='error-message'>$error</p>";
+      }
+      ?>
+
       <input type="text" id="username" name="username" placeholder="Username" />
       <span id="usernameError" class="error"></span>
 
@@ -86,9 +100,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
       <span id="confirmPasswordError" class="error"></span>
 
+      <label class="form-label">Select User Type:</label>
+
       <select class="type" name="user_type">
-        <option value="user">user</option>
-        <option value="admin">admin</option>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
       </select>
 
       <div class="button">

@@ -3,22 +3,22 @@
 class User
 {
     private $id;
-    private $username;
+    private $name;
     private $email;
     private $password;
     private $role;
 
-    function __construct($username, $email, $password, $role)
+    function __construct($name, $email, $password, $role = 'user')
     {
-        $this->username = $username;
+        $this->name = $name;
         $this->email = $email;
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->role = $role;
     }
 
-    function getUsername()
+    function getName()
     {
-        return $this->username;
+        return $this->name;
     }
     function getEmail()
     {
@@ -33,9 +33,9 @@ class User
         return $this->role;
     }
 
-    function setUsername($username)
+    function setName($name)
     {
-        $this->username = $username;
+        $this->name = $name;
     }
     function setEmail($email)
     {
@@ -48,5 +48,10 @@ class User
     function setRole($role)
     {
         $this->role = $role;
+    }
+
+    function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 }

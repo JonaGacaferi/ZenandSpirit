@@ -15,13 +15,14 @@ class UserRepository
     {
         $conn = $this->connection;
 
-        $username = $user->getUsername();
+        $username = $user->getName();
         $email = $user->getEmail();
         $password = $user->getPassword();
+        $userType = $user->getRole();
 
         $sql = "INSERT INTO user_form (name, email, password, user_type) VALUES (?,?,?,?)";
         $statement = $conn->prepare($sql);
-        $statement->execute([$username, $email, $password]);
+        $statement->execute([$username, $email, $password, $userType]);
 
         echo "<script> alert('User has been inserted successfuly!'); </script>";
     }
@@ -74,7 +75,7 @@ class UserRepository
     {
         $conn = $this->connection;
 
-        $sql = "SELECT COUNT(*) AS count FROM user_form WHERE username = ? OR email = ?";
+        $sql = "SELECT COUNT(*) AS count FROM user_form WHERE name = ? OR email = ?";
         $statement = $conn->prepare($sql);
         $statement->execute([$name, $email]);
         $result = $statement->fetch(PDO::FETCH_ASSOC);
