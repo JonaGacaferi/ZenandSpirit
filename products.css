@@ -275,6 +275,69 @@ box-icon {
 }
 
 
+.container{
+  max-width: 12000px;
+  padding: 32px;
+  margin:0 auto;
+}
+
+.admin-product-form form{
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px;
+  border-radius: 8px;
+  background: pink;
+}
+
+.admin-product-form form h3{
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 20px;
+
+}
+
+.admin-product-form form .box{
+  width: 80%;
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  font-size: 15px;
+  margin: 1rem 0 ;
+  background: white;
+}
+
+.btn{
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  padding: 1rem 3rem;
+  background: rgb(107, 161, 107);
+  color: #434952;
+}
+
+.btn:hover{
+  background: rgb(69, 99, 69);
+  color: white;
+}
+
+.message{
+  display: block;
+  background: var(--bg-color);
+  padding:1.5rem 1rem;
+  font-size: 2rem;
+  color:var(--black);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+
+
+
+
 
 footer{
     display: flex;
@@ -363,7 +426,13 @@ footer{
 }
 
 @media screen and (max-width: 1024px){
-    header {
+    html{
+      font-size: 50%;
+    }
+
+
+   
+  header {
         height: auto;
     }
 
@@ -461,8 +530,10 @@ footer{
     }
 }
 
-@media screen and (max-width: 600px){
-  
+@media screen and (max-width: 400px){
+  html{
+    font-size: 45%;
+  }
 
     footer{
         height: auto;
