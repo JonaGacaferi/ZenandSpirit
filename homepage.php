@@ -18,9 +18,9 @@ include("function.php");
 </head>
 <header>
   <div class="menu">
-    <nav >
-    <div class="logo1">
-       <img src="yogalogo.png" height="40px" class="logo1" />
+    <nav>
+      <div class="logo1">
+        <img src="yogalogo.png" height="40px" class="logo1" />
         <p class="logo">Zen & Spirit</p>
       </div>
       <ul>
@@ -101,10 +101,10 @@ include("function.php");
           We invite you to explore the ancient practices of meditation and yoga,<br>
           guiding you toward a path of holistic well-being and inner peace.</p>
       </div>
-      
 
-    <div class="text-2">
-      <h2 id="h2-2">Our Vision: Nurturing Mind, Body, and Spirit</h2>
+
+      <div class="text-2">
+        <h2 id="h2-2">Our Vision: Nurturing Mind, Body, and Spirit</h2>
         <p id="p2"> At Zen & Spirit, we believe in the transformative power of mindfulness<br>
           and the profound connection between mind, body, and spirit.<br>
           Our mission is to provide a sacred space for you to cultivate <br>
@@ -124,7 +124,7 @@ include("function.php");
           we can observe our thoughts without attachment and let go of unnecessary stress. </p>
       </div>
   </section>
-  
+
 
 </body>
 <footer>
@@ -139,7 +139,7 @@ include("function.php");
   </div>
   <div class="footermain">
     <div class="footerleft">
-      
+
       <p> Harmonize Your Existence: Immerse Yourself in Tranquility with our Guided Yoga and Meditation Experiences.</p>
     </div>
     <div class="footercenter">
