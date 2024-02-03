@@ -9,32 +9,32 @@ $contactObj = new contact_form();
 
 
 
-if(isset($_GET['deleteUserId']) && !empty($_GET['deleteUserId'])) {
+if (isset($_GET['deleteUserId']) && !empty($_GET['deleteUserId'])) {
     $deleteUserId = $_GET['deleteUserId'];
     $userObj->deleteRecord($deleteUserId);
 }
 
-if(isset($_GET['editUserId']) && !empty($_GET['editUserId'])) {
-  $editUserId = $_GET['editUserId'];
-  // Redirect to edit.php with the user ID for editing
-  header("Location: edit.php?editId=$editUserId");
-  exit; // Stop further execution to prevent accidental output
+if (isset($_GET['editUserId']) && !empty($_GET['editUserId'])) {
+    $editUserId = $_GET['editUserId'];
+    // Redirect to edit.php with the user ID for editing
+    header("Location: edit.php?editId=$editUserId");
+    exit; // Stop further execution to prevent accidental output
 }
 
-if(isset($_GET['deleteProductId']) && !empty($_GET['deleteProductId'])) {
+if (isset($_GET['deleteProductId']) && !empty($_GET['deleteProductId'])) {
     $deleteProductId = $_GET['deleteProductId'];
     $productObj->deleteProduct($deleteProductId);
 }
 
-if(isset($_GET['editProductId']) && !empty($_GET['editProductId'])) {
-  $editProductId = $_GET['editProductId'];
-  // Redirect to edit.php with the product ID for editing
-  header("Location: edit_products.php?editId=$editProductId");
-  exit; // Stop further execution to prevent accidental output
+if (isset($_GET['editProductId']) && !empty($_GET['editProductId'])) {
+    $editProductId = $_GET['editProductId'];
+    // Redirect to edit_products.php with the product ID for editing
+    header("Location: edit_products.php?editId=$editProductId");
+    exit; // Stop further execution to prevent accidental output
 }
 
 
-if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) {
+if (isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) {
     $deleteContactFormId = $_GET['deleteContactFormId'];
     $contactObj->deleteContactForm($deleteContactFormId);
 }
@@ -58,8 +58,6 @@ if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) 
 
         header {
             height: 10vh;
-            width: 100%;
-            background-size: cover;
         }
 
         nav {
@@ -127,7 +125,7 @@ if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) 
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
@@ -259,76 +257,76 @@ if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) 
         </div>
     </header>
 
-<div class="container">
-    <div class="table-container">
-        <h2>Users</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            ...
-<tbody>
-    <?php
-    $users = $userObj->displayData();
-    foreach ($users as $user) {
-        echo "<tr>";
-        echo "<td>{$user['id']}</td>";
-        echo "<td>{$user['name']}</td>";
-        echo "<td>{$user['email']}</td>";
-        echo "<td>{$user['password']}</td>";
-        echo "<td>
+    <div class="container">
+        <div class="table-container">
+            <h2>Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                ...
+                <tbody>
+                    <?php
+                    $users = $userObj->displayData();
+                    foreach ($users as $user) {
+                        echo "<tr>";
+                        echo "<td>{$user['id']}</td>";
+                        echo "<td>{$user['name']}</td>";
+                        echo "<td>{$user['email']}</td>";
+                        echo "<td>{$user['password']}</td>";
+                        echo "<td>
         <a href='edit.php?editUserId={$user['id']}' class='btn'>Edit</a>
 
               </td>";
-        echo "<td>
-        <a href='Dashboard.php?deleteProductId={$user['id']}' class='btn' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a>
+                        echo "<td>
+        <a href='Dashboard.php?deleteUserId={$user['id']}' class='btn' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a>
 
               </td>";
-        echo "</tr>";
-    }
-    ?>
-</tbody>
-...
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+                ...
 
-        </table>
-    </div>
+            </table>
+        </div>
 
         <div class="table-container">
             <h2>Products</h2>
             <table class="table table-hover">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $products = $productObj->displayProducts();
-        foreach ($products as $product) {
-            echo "<tr>";
-            echo "<td>{$product['id']}</td>";
-            echo "<td>{$product['name']}</td>";
-            echo "<td>{$product['price']}</td>";
-            echo "<td><img src='images/{$product['image']}' alt='{$product['name']}' style='max-width: 100px; max-height: 100px;'></td>";
-            echo "<td>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $products = $productObj->displayProducts();
+                    foreach ($products as $product) {
+                        echo "<tr>";
+                        echo "<td>{$product['id']}</td>";
+                        echo "<td>{$product['name']}</td>";
+                        echo "<td>{$product['price']}</td>";
+                        echo "<td><img src='images/{$product['image']}' alt='{$product['name']}' style='max-width: 100px; max-height: 100px;'></td>";
+                        echo "<td>
                     <a href='edit_products.php?editProductId={$product['id']}' class='btn'>Edit</a>
                     <a href='dashboard.php?deleteProductId={$product['id']}' class='btn' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>
                   </td>";
-            echo "</tr>";
-        }
-        ?>
-    </tbody>
-</table>
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
         <div class="table-container">
             <h2>Contact us </h2>
@@ -350,18 +348,12 @@ if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) 
                         echo "<td>{$contact['name']}</td>";
                         echo "<td>{$contact['email']}</td>";
                         echo "<td>{$contact['note']}</td>";
-                <?php
-                $contacts = $contactObj->displayContactForms();
-                foreach ($contacts as $contact) {
-                    echo "<tr>";
-                    echo "<td>{$contact['name']}</td>";
-                    echo "<td>{$contact['email']}</td>";
-                    echo "<td>{$contact['note']}</td>";
 
                         echo "<td>
-                            <a href='#' class='btn btn-primary mr-2'><i class='fa fa-pencil'></i></a>
-                            <a href='Dashboard.php?deleteProductId=" . (isset($contact['id']) ? $contact['id'] : '') . "' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to delete this contact form?\");'><i class='fa fa-trash'></i></a>
-                          </td>";
+            <a href='#' class='btn btn-primary mr-2'><i class='fa fa-pencil'></i></a>
+            <a href='Dashboard.php?deleteContactFormId=" . (isset($contact['id']) ? $contact['id'] : '') . "' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to delete this contact form?\");'><i class='fa fa-trash'></i></a>
+          </td>";
+
                         echo "</tr>";
                     }
                     ?>
@@ -371,25 +363,23 @@ if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) 
     </div>
     </div>
 
-<script>
-    
-    document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('btn')) {
-        var button = event.target;
-        if (button.textContent === 'Delete') {
-            var confirmDelete = confirm("Are you sure you want to delete this item?");
-            if (!confirmDelete) {
-                event.preventDefault(); 
+    <script>
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('btn')) {
+                var button = event.target;
+                if (button.textContent === 'Delete') {
+                    var confirmDelete = confirm("Are you sure you want to delete this item?");
+                    if (!confirmDelete) {
+                        event.preventDefault();
+                    }
+                } else if (button.textContent === 'Edit') {
+                    var editURL = button.getAttribute('href');
+                    window.location.href = editURL;
+                    event.preventDefault();
+                }
             }
-        } else if (button.textContent === 'Edit') {
-            var editURL = button.getAttribute('href');
-            window.location.href = editURL; 
-            event.preventDefault(); 
-        }
-    }
-});
-
-</script>
+        });
+    </script>
 </body>
 
 </html>
