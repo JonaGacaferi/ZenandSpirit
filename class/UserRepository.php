@@ -1,4 +1,5 @@
 <?php
+include_once 'User.php';
 include_once 'connection.php';
 
 class UserRepository
@@ -81,5 +82,28 @@ class UserRepository
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $result['count'] > 0;
+    }
+
+    // UserRepository.php
+    function getUserByUsername($username)
+    {
+        $conn = $this->connection;
+
+        $sql = "SELECT * FROM user_form WHERE name = ?";
+        $statement = $conn->prepare($sql);
+        $statement->execute([$username]);
+        $userRecord = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($userRecord) {
+            $user = new User(
+                $userRecord['name'],
+                $userRecord['email'],
+                $userRecord['password'],
+                $userRecord['user_type']
+            );
+
+            return $user;
+        }
+        return null;
     }
 }

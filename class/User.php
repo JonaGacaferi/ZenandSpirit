@@ -8,14 +8,19 @@ class User
     private $password;
     private $role;
 
-    function __construct($name, $email, $password, $role = 'user')
+    function __construct($id, $name, $email, $password, $role = 'user')
     {
+        $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->role = $role;
     }
 
+    function getId()
+    {
+        return $this->id;
+    }
     function getName()
     {
         return $this->name;
@@ -33,6 +38,10 @@ class User
         return $this->role;
     }
 
+    function setId($id)
+    {
+        $this->id = $id;
+    }
     function setName($name)
     {
         $this->name = $name;

@@ -2,7 +2,6 @@
 session_start();
 
 include("connection.php");
-include("function.php");
 
 ?>
 
@@ -145,7 +144,7 @@ include("function.php");
     <div class="footercenter">
       <p>Help</p>
       <p>Support</p>
-      <p>Contact</p>
+      <p><a href="ContactUs.php" style="text-decoration: none; color: #c3c3c3;">Contact Us</a></p>
     </div>
     <div class="footerright">
       <p>Terms of use</p>

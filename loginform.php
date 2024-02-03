@@ -1,60 +1,27 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 
 include("connection.php");
-include("Person.php");
-include("Admin.php");
-include("User.php");
+include("class/User.php");
+include("class/UserRepository.php");
 
 $usernameError = $emailError = $passwordError = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $user_name = $_POST['username'];
-  $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $user = new User($id, $name, $email, $password, $type, $dateAdded);
-  $admin = new Admin($id, $name, $email, $password, $type, $premissionLevel);
+  $userRepository = new UserRepository();
+  $user = $userRepository->getUserByUsername($user_name);
 
-  $redirect_page = isset($_GET['redirect']) ? $_GET['redirect'] : 'homepage';
-
-  //$user_data = getUserByUsername($user_name);
-
-  if ($user_data) {
-    if ($user_data->email == $email) {
-      if ($user_data->password == $password) {
-        $_SESSION['user_id'] = $user_data->id;
-        header("Location: $redirect_page.php");
-        exit;
-      } else {
-        $passwordError = "Wrong password!";
-      }
-    } else {
-      $emailError = "Wrong email!";
-    }
+  if ($user && password_verify($password, $user->getPassword())) {
+    $_SESSION['user_id'] = $user->getId();
+    header("Location: homepage.php");
+    exit;
   } else {
-    //$admin_data = getAdminByUsername($user_name);
-
-    if ($admin_data) {
-      if ($admin_data->email == $email) {
-        if ($admin_data->password == $password) {
-          $_SESSION['admin_id'] = $admin_data->id;
-          header("Location: admin_dashboard.php");
-          exit;
-        } else {
-          $passwordError = "Wrong password!";
-        }
-      } else {
-        $emailError = "Wrong email";
-      }
-    } else {
-      $usernameError = "User not found. Please sign up firs!";
-      echo '<script>';
-      echo 'alert("User not found. Please sign up first!");';
-      echo 'window.location.href = "SignUp.php"';
-      echo '</script>';
-      exit;
-    }
+    $errorMessage = "Invalid username or password!";
   }
 }
 ?>
@@ -85,18 +52,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       </div>
       <ul>
         <li><a href="homepage.php">Home</a></li>
-        <li><a href="loginform.php">Log In</a></li>
+        <?php if (isset($_SESSION['user_id'])) : ?>
+          <li><a href="logout.php">LogOut</a></li>
+        <?php else : ?>
+          <li><a href="loginform.php">Log In</a></li>
+        <?php endif; ?>
         <li><a href="YogaClasses.php">Yoga Classes</a></li>
         <li><a href="Meditation.php">Meditation Classes</a></li>
         <li><a href="TranquilGoods.php">TranquilGoods</a></li>
-        <?php if (isset($_SESSION['user_id'])) : ?>
-          <li><a href="logout.php">LogOut</a></li>
-        <?php endif; ?>
       </ul>
     </nav>
   </div>
 
-  <form method="post" onsubmit="return validateForm()">
+  <form method="post" onsubmit="return validateForm(event)">
     <div class="loginForm">
       <h1>LOG IN</h1>
 
@@ -106,25 +74,51 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
       <br>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" />
-      <span id="emailError" class="error" style="color: red;"><?php echo $emailError; ?></span>
-
-      <br />
-
       <label for="password">Password</label>
       <input type="password" id="password" name="password" />
       <span id="passwordError" class="error" style="color: red;"><?php echo $passwordError; ?></span>
 
       <div class="button">
-        <a href="login.php"><button class="login">LOG IN</button></a>
+        <button class="login">LOG IN</button>
       </div>
       <p>New to Zen & Spirit? <a href="SignUp.php">Sign Up</a></p>
     </div>
   </form>
 
   <script>
-    function validateForm() {
+    function validateForm(event) {
+      let usernameInput = document.getElementById('username');
+      let usernameError = document.getElementById('usernameError');
+
+      let emailInput = document.getElementById('email');
+      let emailError = document.getElementById('emailError');
+
+      let passwordInput = document.getElementById('password');
+      let passwordError = document.getElementById('passwordError');
+
+      usernameError.innerText = '';
+      emailError.innerText = '';
+      passwordError.innerText = '';
+
+      let isValid = true;
+
+      if (!usernameRegex.test(usernameInput.value)) {
+        usernameError.innerText = 'Please enter a valid username!';
+        isValid = false;
+      }
+      if (!emailRegex.test(emailInput.value)) {
+        emailError.innerText = 'Please enter a valid email!';
+        isValid = false;
+      }
+      if (passwordInput.value !== confirmpasswordInput.value) {
+        confirmPasswordError.innerText = 'Password does not match!';
+        isValid = false;
+      }
+      if (!isValid) {
+        event.preventDefault();
+      }
+
+      /*
       var username = document.getElementById("username").value;
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
@@ -158,8 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         document.getElementById("passwordError").innerText = "";
       }
       return true;
-
-
+      */
     }
   </script>
 </body>
