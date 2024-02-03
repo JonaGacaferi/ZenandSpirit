@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connection.php';
 include_once 'class/User.php';
 include_once 'class/UserRepository.php';
@@ -11,7 +12,7 @@ function checkForErrors($name, $email, $password, $confirm, $user)
 
   if (empty($name) || empty($email) || empty($password) || empty($confirm)) {
     return "<span style='color: red;'>Please fill all the fields!</span>";
-  } elseif ($userRepository->userExists($user->getName(), $user->getEmail())) {
+  } elseif ($userRepository->userExists($name, $email)) {
     return "<span style='color: red;'>User with the given username or email already exists!</span>";
   }
   return null;
@@ -20,7 +21,7 @@ function checkForErrors($name, $email, $password, $confirm, $user)
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $name = $_POST['username'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
+  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
   $confirm = $_POST['confirmPassword'];
   $role = $_POST['user_type'];
 
@@ -59,11 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </div>
         <ul>
           <li><a href="homepage.php">Home</a></li>
-          <?php if (isset($_SESSION['user_id'])) : ?>
-            <li><a href="logout.php">LogOut</a></li>
-          <?php else : ?>
-            <li><a href="loginform.php">Log In</a></li>
-          <?php endif; ?>
+          <li><a href="loginform.php">Log In</a></li>
           <li><a href="YogaClasses.php">Yoga Classes</a></li>
           <li><a href="Meditation.php">Meditation Classes</a></li>
           <li><a href="TranquilGoods.php">TranquilGoods</a></li>

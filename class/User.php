@@ -8,12 +8,11 @@ class User
     private $password;
     private $role;
 
-    function __construct($id, $name, $email, $password, $role = 'user')
+    function __construct($name, $email, $password, $role = 'user')
     {
-        $this->id = $id;
         $this->name = $name;
         $this->email = $email;
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
+        $this->password = $password;
         $this->role = $role;
     }
 
@@ -61,6 +60,6 @@ class User
 
     function isAdmin()
     {
-        return $this->role === 'admin';
+        return $this->getRole() === 'admin';
     }
 }

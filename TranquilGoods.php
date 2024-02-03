@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['admin_id'])) {
+    header("Location: loginform.php");
+    die;
+}
 
 require_once 'connection.php';
 
@@ -44,8 +50,8 @@ if (isset($_POST['add_product'])) {
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
 
-                    <?php if (isset($_SESSION['user_id'])) : ?>
-                        <li><a href="logout.php">LogOut</a></li>
+                    <?php if (isset($_SESSION['user_id']) || isset($_SESSION['admin_id'])) : ?>
+                        <li><a href="logout.php">Log Out</a></li>
                     <?php else : ?>
                         <li><a href="loginform.php">Log In</a></li>
                     <?php endif; ?>

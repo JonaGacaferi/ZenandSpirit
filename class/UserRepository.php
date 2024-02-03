@@ -25,14 +25,14 @@ class UserRepository
         $statement = $conn->prepare($sql);
         $statement->execute([$username, $email, $password, $userType]);
 
-        echo "<script> alert('User has been inserted successfuly!'); </script>";
+        //echo "<script> alert('User has been inserted successfuly!'); </script>";
     }
 
     function getAllUsers()
     {
         $conn = $this->connection;
 
-        $sql = "SELECT * FROM user";
+        $sql = "SELECT * FROM user_form";
         $statement = $conn->query($sql);
         $users = $statement->fetchAll();
 
@@ -54,9 +54,9 @@ class UserRepository
     {
         $conn = $this->connection;
 
-        $sql = "UPDATE user_form SET username = ?, email = ?, password = ?, type = ?, dateAdded = ?";
+        $sql = "UPDATE user_form SET username = ?, email = ?, password = ?, user_type = ?";
         $statement = $conn->prepare($sql);
-        $statement->execute($name, $email, $password, $user_type);
+        $statement->execute([$name, $email, $password, $user_type]);
 
         //echo "<script>alert('update was successful'); </script>";
     }
@@ -84,7 +84,6 @@ class UserRepository
         return $result['count'] > 0;
     }
 
-    // UserRepository.php
     function getUserByUsername($username)
     {
         $conn = $this->connection;

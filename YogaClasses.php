@@ -2,6 +2,15 @@
 session_start();
 
 include("connection.php");
+
+$databaseConnection = new DatabaseConnection();
+$conn = $databaseConnection->startConnection();
+if (!$conn) {
+  die("Connection failed");
+}
+
+$sql = "SELECT * FROM `yoga_classes` LIMIT 1";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +34,8 @@ include("connection.php");
         </div>
         <ul>
           <li><a href="homepage.php">Home</a></li>
-          <?php if (isset($_SESSION['user_id'])) : ?>
-            <li><a href="logout.php">LogOut</a></li>
+          <?php if (isset($_SESSION['user_id']) || isset($_SESSION['admin_id'])) : ?>
+            <li><a href="logout.php">Log Out</a></li>
           <?php else : ?>
             <li><a href="loginform.php">Log In</a></li>
           <?php endif; ?>
@@ -42,7 +51,7 @@ include("connection.php");
 
   <div id="container">
     <div class="yogaClass">
-      <img class="imageClass" src="img/class1.jpg" alt="Yoga Class 1" />
+      <a href="https://www.youtube.com/"><img class="imageClass" src="img/class1.jpg" alt="Yoga Class 1" /></a>
       <div class="details">
         <h2>Anusara Yoga</h2>
         <p>31 days - 5 classes</p>

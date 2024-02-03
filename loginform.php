@@ -1,27 +1,41 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
 
 include("connection.php");
 include("class/User.php");
+include("class/Admin.php");
 include("class/UserRepository.php");
+include("class/AdminRepository.php");
 
-$usernameError = $emailError = $passwordError = "";
+$usernameError = $passwordError = "";
+
+function redirectTo($user)
+{
+  echo "<script>window.location.href = '" . ($user->isAdmin() ? "YogaClasses.php" : "homepage.php") . "';</script>";
+  exit;
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $user_name = $_POST['username'];
   $password = $_POST['password'];
 
   $userRepository = new UserRepository();
+  $adminRepository = new AdminRepository();
+
   $user = $userRepository->getUserByUsername($user_name);
+  $admin = $adminRepository->getAdminByUsername($user_name);
 
   if ($user && password_verify($password, $user->getPassword())) {
     $_SESSION['user_id'] = $user->getId();
-    header("Location: homepage.php");
-    exit;
+    redirectTo($user);
+  } elseif ($admin && password_verify($password, $admin->getPassword())) {
+    $_SESSION['admin_id'] = $admin->getId();
+    redirectTo($admin);
   } else {
-    $errorMessage = "Invalid username or password!";
+    echo '<script>alert("User not found. Please sign up first.");</script>';
+    echo '<script>window.location.href = "SignUp.php";</script>';
+    exit;
   }
 }
 ?>
@@ -52,11 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       </div>
       <ul>
         <li><a href="homepage.php">Home</a></li>
-        <?php if (isset($_SESSION['user_id'])) : ?>
-          <li><a href="logout.php">LogOut</a></li>
-        <?php else : ?>
-          <li><a href="loginform.php">Log In</a></li>
-        <?php endif; ?>
+        <li><a href="loginform.php">Log In</a></li>
         <li><a href="YogaClasses.php">Yoga Classes</a></li>
         <li><a href="Meditation.php">Meditation Classes</a></li>
         <li><a href="TranquilGoods.php">TranquilGoods</a></li>
@@ -90,69 +100,31 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       let usernameInput = document.getElementById('username');
       let usernameError = document.getElementById('usernameError');
 
-      let emailInput = document.getElementById('email');
-      let emailError = document.getElementById('emailError');
-
       let passwordInput = document.getElementById('password');
       let passwordError = document.getElementById('passwordError');
 
       usernameError.innerText = '';
-      emailError.innerText = '';
       passwordError.innerText = '';
+
+      let usernameRegex = /^[a-zA-Z0-9\-]+$/;;
 
       let isValid = true;
 
-      if (!usernameRegex.test(usernameInput.value)) {
+      if (usernameInput.value.trim() === '') {
         usernameError.innerText = 'Please enter a valid username!';
         isValid = false;
-      }
-      if (!emailRegex.test(emailInput.value)) {
-        emailError.innerText = 'Please enter a valid email!';
+      } else if (!usernameRegex.test(usernameInput.value)) {
+        usernameError.innerText = 'Invalid characters in the username!';
         isValid = false;
       }
-      if (passwordInput.value !== confirmpasswordInput.value) {
-        confirmPasswordError.innerText = 'Password does not match!';
+
+      if (passwordInput.value.length < 8) {
+        passwordError.innerText = 'Password must be at least 8 characters long!';
         isValid = false;
       }
       if (!isValid) {
         event.preventDefault();
       }
-
-      /*
-      var username = document.getElementById("username").value;
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-
-      var usernameError = document.getElementById("usernameError");
-      var emailError = document.getElementById("emailError");
-      var passwordError = document.getElementById("passwordError");
-
-      if (username.trim() === "") {
-        document.getElementById("usernameError").innerText =
-          "Username cannot be empty";
-        return false;
-      } else {
-        document.getElementById("usernameError").innerText = "";
-      }
-
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        document.getElementById("emailError").innerText =
-          "Invalid email address";
-        return false;
-      } else {
-        document.getElementById("emailError").innerText = "";
-      }
-
-      if (password.length < 8) {
-        document.getElementById("passwordError").innerText =
-          "Password must be at least 8 characters long";
-        return false;
-      } else {
-        document.getElementById("passwordError").innerText = "";
-      }
-      return true;
-      */
     }
   </script>
 </body>
