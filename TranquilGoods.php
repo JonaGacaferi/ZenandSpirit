@@ -1,4 +1,21 @@
+<?php 
 
+ require_once 'connection.php';
+
+if(isset($_POST['add_product'])){
+    $product_emri=$_POST['product_emri'];
+    $product_cmimi=$_POST['product_cmimi'];
+    $product_foto=$_FILES['product_foto']['name'];
+    $product_foto_tmp_name = $_POST['product_foto']['tmp_name'];
+    $product_foto_folder = 'img_Jona/'.$product_foto;
+
+    if(empty($product_emri) || empty($product_cmimi) || empty($product_foto)){
+        $message[]='Fill all the boxes';
+    }
+
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -13,6 +30,9 @@
     <title>TranquilGoods</title>
 </head>
 <body>
+
+
+
 
 <header>
         <div class="menu">
@@ -34,7 +54,13 @@
         </div>
     </header>
 
-
+    <?php
+   if(isset($message)){
+    foreach($message as $msg){
+        echo '<span class="message">'.$msg.'</span>';
+    }
+}
+?>
 
 <section id="product-container" >
     <h2 class="product-title">Yoga & Meditation Equipment</h2>
@@ -120,7 +146,20 @@
     </div>
 </div>
 
+<div class="container-admin">
+  <div class="admin-product-form">
+   <form action="<?php $_SERVER['PHP_SELF']?>">
+    <h3>Add a new product</h3>
+    <input type="text" placeholder="enter product name" name="product_emri" class="box">
+    <input type="number" placeholder="enter product price" name="product_cmimi" class="box">
+    <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_foto" class="box">
+    <input type="submit" class="btn" name="add_product" value="add product">
+</form>
 
+  </div>
+
+
+</div>
 
 
    
