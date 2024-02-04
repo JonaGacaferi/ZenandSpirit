@@ -2,9 +2,8 @@
 session_start();
 
 include("connection.php");
-include("Person.php");
-include("Admin.php");
-include("User.php");
+include("class/User.php");
+include("class/UserRepository.php");
 
 $usernameError = $emailError = $passwordError = "";
 
@@ -13,10 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $user = new User($id, $name, $email, $password, $type, $dateAdded);
-  $admin = new Admin($id, $name, $email, $password, $type, $premissionLevel);
-
-  $redirect_page = isset($_GET['redirect']) ? $_GET['redirect'] : 'homepage';
+  
 
   //$user_data = getUserByUsername($user_name);
 

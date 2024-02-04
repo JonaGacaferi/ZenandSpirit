@@ -2,12 +2,13 @@
 
 class Admin
 {
+    private $id;
     private $username;
     private $email;
     private $password;
     private $role;
 
-    function __construct($username, $email, $password, $role)
+    function __construct($username, $email, $password, $role = 'admin')
     {
         $this->username = $username;
         $this->email = $email;
@@ -15,6 +16,10 @@ class Admin
         $this->role = $role;
     }
 
+    function getId()
+    {
+        return $this->id;
+    }
     function getUsername()
     {
         return $this->username;
@@ -32,6 +37,10 @@ class Admin
         return $this->role;
     }
 
+    function setId($id)
+    {
+        $this->id = $id;
+    }
     function setUsername($username)
     {
         $this->username = $username;
@@ -47,5 +56,10 @@ class Admin
     function setRole($role)
     {
         $this->role = $role;
+    }
+
+    function isUser()
+    {
+        return $this->getRole() === 'user';
     }
 }
