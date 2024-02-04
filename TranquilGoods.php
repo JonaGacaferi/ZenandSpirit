@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['admin_id'])) {
-    header("Location: loginform.php");
-    die;
-}
+//if (!isset($_SESSION['user_id']) || !isset($_SESSION['admin_id'])) {
+//    header("Location: loginform.php");
+//    die;
+//}
 
 require_once 'connection.php';
 

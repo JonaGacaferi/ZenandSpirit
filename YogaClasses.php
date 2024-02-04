@@ -3,14 +3,6 @@ session_start();
 
 include("connection.php");
 
-$databaseConnection = new DatabaseConnection();
-$conn = $databaseConnection->startConnection();
-if (!$conn) {
-  die("Connection failed");
-}
-
-$sql = "SELECT * FROM `yoga_classes` LIMIT 1";
-$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>

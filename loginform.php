@@ -15,7 +15,6 @@ function redirectTo($user)
   exit;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $user_name = $_POST['username'];
   $password = $_POST['password'];
@@ -33,9 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $_SESSION['admin_id'] = $admin->getId();
     redirectTo($admin);
   } else {
-    echo '<script>alert("User not found. Please sign up first.");</script>';
-    echo '<script>window.location.href = "SignUp.php";</script>';
-    exit;
+    if (!$user) {
+      echo '<script>alert("User not found.");</script>';
+    } elseif (!password_verify($password, $user->getPassword())) {
+      echo '<script>alert("Incorrect password.");</script>';
+    }
+    // Uncomment the following line to redirect to the login page instead of signup
+    // echo '<script>window.location.href = "loginform.php";</script>';
+
+    //echo '<script>alert("User not found. Please sign up first.");</script>';
+    //echo '<script>window.location.href = "SignUp.php";</script>';
+    //exit;
   }
 }
 ?>
