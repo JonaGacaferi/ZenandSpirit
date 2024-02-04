@@ -18,7 +18,7 @@ class contact_form
         }
     }
 
-    // Insert contact form data into contact_forms table
+    
     public function insertContactForm($post)
     {
         $name = $this->con->real_escape_string($_POST['name']);
@@ -34,17 +34,16 @@ class contact_form
             }
     }
 
-    // Fetch contact form records for listing
-    // Fetch contact form records for listing
+    
 public function displayContactForms()
 {
     $query = "SELECT * FROM contact_form";
     $result = $this->con->query($query);
 
     if (!$result) {
-        // Handle query error
+        
         echo "Error: " . $this->con->error;
-        return []; // Return empty array
+        return []; 
     }
 
     if ($result->num_rows > 0) {
@@ -54,12 +53,12 @@ public function displayContactForms()
         }
          return $data;
     } else {
-         return []; // Return empty array if no records found
+         return []; 
     }
 }
 
 
-    // Fetch single contact form data for edit
+    
     public function getContactFormById($id)
     {
         $query = "SELECT * FROM contact_form WHERE id = '$id'";
@@ -71,7 +70,7 @@ public function displayContactForms()
         echo "Record not found";
         }    }
 
-    // Update contact form data in the contact_forms table
+    
     public function updateContactForm($postData)
     {
         $name = $this->con->real_escape_string($_POST['uname']);
@@ -88,7 +87,7 @@ public function displayContactForms()
         }
         }    }
 
-    // Delete contact form data from the contact_forms table
+    
     public function deleteContactForm($id)
     {
         $query = "DELETE FROM contact_form WHERE id = '$id'";

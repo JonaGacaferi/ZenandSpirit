@@ -1,10 +1,11 @@
 <?php
-include 'user_form.php';
 
-$useratObj = new userat();
+ include 'products.php';
+
+$productObj = new products();
 
 if(isset($_POST['submit'])) {
-    $useratObj->insertData($_POST);
+    $productObj->insertProduct($_POST);
 }
 
 ?>
@@ -60,19 +61,19 @@ if(isset($_POST['submit'])) {
 
 <div class="container">
     <div class="add-section">
-        <h2>Add New User</h2>
-        <form action="add.php" method="POST">
+        <h2>Add New Product</h2>
+        <form action="add_products.php" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" name="name" placeholder="Enter name" required>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" placeholder="Enter email" required>
+                <label for="price">Price</label>
+                <input type="price" name="price" placeholder="Enter price" required>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="Enter Password" required>
+                <label for="image">Image</label>
+                <input type="file" accept="image/png, image/jpeg, image/jpg"  name="image" placeholder="Select image" required>
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Submit">

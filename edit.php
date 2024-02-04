@@ -1,70 +1,96 @@
 <?php
-  
-  // Include database file
-  include 'user_form.php';
+include 'user_form.php';
 
-  $useratObj = new userat();
+$useratObj = new userat();
 
-  // Edit customer record
-  if(isset($_GET['editId']) && !empty($_GET['editId'])) {
+$editId = $uform = [];
+
+if(isset($_GET['editId']) && !empty($_GET['editId'])) {
     $editId = $_GET['editId'];
-    $uform = $useratObj->displyaRecordById($editId);
-  }
+    $uform = $useratObj->displayData($editId);
 
-  // Update Record in customer table
-  if(isset($_POST['update'])) {
+    if (!$uform) {
+        echo "Error: User data not found!";
+    }
+}
+
+if(isset($_POST['update'])) {
     $useratObj->updateRecord($_POST);
-  }  
-    
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>PHP MySql OOP CRUD Example Tutorial</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <title>Edit User</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-<div class="card text-center" style="padding:15px;">
-  <h4>PHP MySql OOP CRUD Example Tutorial</h4>
-</div><br> 
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-5 mx-auto">
-            <div class="card">
-                <div class="card-header bg-primary">
-                    <h4 class="text-white">Update Records</h4>
-                </div>
-                <div class="card-body bg-light">
-                  <form action="edit.php" method="POST">
-                    <div class="form-group">
-                      <label for="name">Name:</label>
-                      <input type="text" class="form-control" name="uname" value="<?php echo $uform['name']; ?>" required="">
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="email" class="form-control" name="uemail" value="<?php echo $uform['email']; ?>" required="">
-                    </div>
-                    <div class="form-group">
-                      <label for="password">Password:</label>
-                      <input type="text" class="form-control" name="upassword" value="<?php echo $uform['password']; ?>" required="">
-                    </div>
-                    <div class="form-group">
-                      <input type="hidden" name="id" value="<?php echo $uform['id']; ?>">
-                      <input type="submit" name="update" class="btn btn-primary" style="float:right;" value="Update">
-                    </div>
-                  </form>
-                </div>
-                </div>
+    <div class="edit-section">
+        <h2>Edit User</h2>
+        <form action="edit.php" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="uname" value="<?php echo isset($uform['name']) ? $uform['name'] : ''; ?>" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="uemail" value="<?php echo isset($uform['email']) ? $uform['email'] : ''; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="upassword" value="<?php echo isset($uform['password']) ? $uform['password'] : ''; ?>" required>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="id" value="<?php echo isset($uform['id']) ? $uform['id'] : ''; ?>">
+                <input type="submit" name="update" value="Update">
+            </div>
+        </form>
     </div>
+</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

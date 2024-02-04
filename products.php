@@ -22,11 +22,11 @@ class products
   
     public function insertProduct($post)
     {
-        $emri = $this->con->real_escape_string($_POST['emri']);
-        $cmimi = $this->con->real_escape_string($_POST['cmimi']);
+        $name = $this->con->real_escape_string($_POST['name']);
+        $price = $this->con->real_escape_string($_POST['price']);
         $image = $this->con->real_escape_string($_POST['image']); 
 
-        $query="INSERT INTO user_form(emri,cmimi,image) VALUES('$emri','$cmimi','$image')";
+        $query="INSERT INTO products(name,price,image) VALUES('$name','$price','$image')";
         $sql = $this->con->query($query);
         if ($sql==true) {
             header("Location:Dashboard.php?msg1=insert");
@@ -73,22 +73,25 @@ public function displayProducts()
         }    }
 
     
-    public function updateProduct($postData)
-    {
-        $emri = $this->con->real_escape_string($_POST['uemri']);
-        $cmimi = $this->con->real_escape_string($_POST['ucmimi']);
-        $image = $this->con->real_escape_string($_POST['uimage']);
-        $id = $this->con->real_escape_string($_POST['id']);
-    if (!empty($id) && !empty($postData)) {
-        $query = "UPDATE products SET emri = '$emri', cmimi = '$cmimi', image = '$image' WHERE id = '$id'";
-        $sql = $this->con->query($query);
-        if ($sql==true) {
-            header("Location:Dashboard.php?msg2=update");
-        }else{
-            echo "Registration updated failed try again!";
+        public function updateProduct($postData)
+        {
+            $name = $this->con->real_escape_string($_POST['uname']);
+            $price = $this->con->real_escape_string($_POST['uprice']);
+            // Check if 'uimage' key is set before accessing it
+            $image = isset($_POST['uimage']) ? $this->con->real_escape_string($_POST['uimage']) : '';
+            $id = $this->con->real_escape_string($_POST['id']);
+        
+            if (!empty($id) && !empty($postData)) {
+                $query = "UPDATE products SET name = '$name', price = '$price', image = '$image' WHERE id = '$id'";
+                $sql = $this->con->query($query);
+                if ($sql == true) {
+                    header("Location:Dashboard.php?msg2=update");
+                } else {
+                    echo "Registration updated failed try again!";
+                }
+            }
         }
-        }    }
-
+        
    
     public function deleteProduct($id)
     {

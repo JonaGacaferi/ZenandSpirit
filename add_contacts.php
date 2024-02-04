@@ -1,17 +1,18 @@
 <?php
-include 'user_form.php';
 
-$useratObj = new userat();
+ include 'contact_form.php';
+
+$contactObj = new contact_form();
 
 if(isset($_POST['submit'])) {
-    $useratObj->insertData($_POST);
+    $contactObj->insertContactForm($_POST);
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add User</title>
+    <title>Add Contacts</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -60,19 +61,19 @@ if(isset($_POST['submit'])) {
 
 <div class="container">
     <div class="add-section">
-        <h2>Add New User</h2>
-        <form action="add.php" method="POST">
+        <h2>Add New Product</h2>
+        <form action="add_contacts.php" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" name="name" placeholder="Enter name" required>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Email:</label>
                 <input type="email" name="email" placeholder="Enter email" required>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="Enter Password" required>
+                <label for="text">Note:</label>
+                <input type="text"   name="note" placeholder="Type the note " required>
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Submit">
