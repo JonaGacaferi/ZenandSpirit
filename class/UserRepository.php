@@ -1,4 +1,5 @@
 <?php
+include_once 'User.php';
 include_once 'connection.php';
 
 class UserRepository
@@ -24,14 +25,14 @@ class UserRepository
         $statement = $conn->prepare($sql);
         $statement->execute([$username, $email, $password, $userType]);
 
-        echo "<script> alert('User has been inserted successfuly!'); </script>";
+        //echo "<script> alert('User has been inserted successfuly!'); </script>";
     }
 
     function getAllUsers()
     {
         $conn = $this->connection;
 
-        $sql = "SELECT * FROM user";
+        $sql = "SELECT * FROM user_form";
         $statement = $conn->query($sql);
         $users = $statement->fetchAll();
 
@@ -53,9 +54,9 @@ class UserRepository
     {
         $conn = $this->connection;
 
-        $sql = "UPDATE user_form SET username = ?, email = ?, password = ?, type = ?, dateAdded = ?";
+        $sql = "UPDATE user_form SET username = ?, email = ?, password = ?, user_type = ?";
         $statement = $conn->prepare($sql);
-        $statement->execute($name, $email, $password, $user_type);
+        $statement->execute([$name, $email, $password, $user_type]);
 
         //echo "<script>alert('update was successful'); </script>";
     }
@@ -81,5 +82,27 @@ class UserRepository
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $result['count'] > 0;
+    }
+
+    function getUserByUsername($username)
+    {
+        $conn = $this->connection;
+
+        $sql = "SELECT * FROM user_form WHERE name = ?";
+        $statement = $conn->prepare($sql);
+        $statement->execute([$username]);
+        $userRecord = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($userRecord) {
+            $user = new User(
+                $userRecord['name'],
+                $userRecord['email'],
+                $userRecord['password'],
+                $userRecord['user_type']
+            );
+
+            return $user;
+        }
+        return null;
     }
 }

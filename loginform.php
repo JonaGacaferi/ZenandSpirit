@@ -3,54 +3,39 @@ session_start();
 
 include("connection.php");
 include("class/User.php");
+include("class/Admin.php");
 include("class/UserRepository.php");
+include("class/AdminRepository.php");
 
-$usernameError = $emailError = $passwordError = "";
+$usernameError = $passwordError = "";
+
+function redirectTo($user)
+{
+  echo "<script>window.location.href = '" . ($user->isAdmin() ? "Dashboard.php" : "homepage.php") . "';</script>";
+  exit;
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $user_name = $_POST['username'];
-  $email = $_POST['email'];
   $password = $_POST['password'];
 
-  
+  $userRepository = new UserRepository();
+  $adminRepository = new AdminRepository();
 
-  //$user_data = getUserByUsername($user_name);
+  $user = $userRepository->getUserByUsername($user_name);
+  $admin = $adminRepository->getAdminByUsername($user_name);
 
-  if ($user_data) {
-    if ($user_data->email == $email) {
-      if ($user_data->password == $password) {
-        $_SESSION['user_id'] = $user_data->id;
-        header("Location: $redirect_page.php");
-        exit;
-      } else {
-        $passwordError = "Wrong password!";
-      }
-    } else {
-      $emailError = "Wrong email!";
-    }
+  if ($user && password_verify($password, $user->getPassword())) {
+    $_SESSION['user_id'] = $user->getId();
+    redirectTo($user);
+  } elseif ($admin && password_verify($password, $admin->getPassword())) {
+    $_SESSION['admin_id'] = $admin->getId();
+    redirectTo($admin);
   } else {
-    //$admin_data = getAdminByUsername($user_name);
-
-    if ($admin_data) {
-      if ($admin_data->email == $email) {
-        if ($admin_data->password == $password) {
-          $_SESSION['admin_id'] = $admin_data->id;
-          header("Location: admin_dashboard.php");
-          exit;
-        } else {
-          $passwordError = "Wrong password!";
-        }
-      } else {
-        $emailError = "Wrong email";
-      }
-    } else {
-      $usernameError = "User not found. Please sign up firs!";
-      echo '<script>';
-      echo 'alert("User not found. Please sign up first!");';
-      echo 'window.location.href = "SignUp.php"';
-      echo '</script>';
-      exit;
-    }
+    echo '<script>alert("User not found. Please sign up first.");</script>';
+    echo '<script>window.location.href = "SignUp.php";</script>';
+    exit;
   }
 }
 ?>
@@ -85,14 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <li><a href="YogaClasses.php">Yoga Classes</a></li>
         <li><a href="Meditation.php">Meditation Classes</a></li>
         <li><a href="TranquilGoods.php">TranquilGoods</a></li>
-        <?php if (isset($_SESSION['user_id'])) : ?>
-          <li><a href="logout.php">LogOut</a></li>
-        <?php endif; ?>
       </ul>
     </nav>
   </div>
 
-  <form method="post" onsubmit="return validateForm()">
+  <form method="post" onsubmit="return validateForm(event)">
     <div class="loginForm">
       <h1>LOG IN</h1>
 
@@ -102,60 +84,47 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
       <br>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" />
-      <span id="emailError" class="error" style="color: red;"><?php echo $emailError; ?></span>
-
-      <br />
-
       <label for="password">Password</label>
       <input type="password" id="password" name="password" />
       <span id="passwordError" class="error" style="color: red;"><?php echo $passwordError; ?></span>
 
       <div class="button">
-        <a href="login.php"><button class="login">LOG IN</button></a>
+        <button class="login">LOG IN</button>
       </div>
       <p>New to Zen & Spirit? <a href="SignUp.php">Sign Up</a></p>
     </div>
   </form>
 
   <script>
-    function validateForm() {
-      var username = document.getElementById("username").value;
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
+    function validateForm(event) {
+      let usernameInput = document.getElementById('username');
+      let usernameError = document.getElementById('usernameError');
 
-      var usernameError = document.getElementById("usernameError");
-      var emailError = document.getElementById("emailError");
-      var passwordError = document.getElementById("passwordError");
+      let passwordInput = document.getElementById('password');
+      let passwordError = document.getElementById('passwordError');
 
-      if (username.trim() === "") {
-        document.getElementById("usernameError").innerText =
-          "Username cannot be empty";
-        return false;
-      } else {
-        document.getElementById("usernameError").innerText = "";
+      usernameError.innerText = '';
+      passwordError.innerText = '';
+
+      let usernameRegex = /^[a-zA-Z0-9\-]+$/;;
+
+      let isValid = true;
+
+      if (usernameInput.value.trim() === '') {
+        usernameError.innerText = 'Please enter a valid username!';
+        isValid = false;
+      } else if (!usernameRegex.test(usernameInput.value)) {
+        usernameError.innerText = 'Invalid characters in the username!';
+        isValid = false;
       }
 
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        document.getElementById("emailError").innerText =
-          "Invalid email address";
-        return false;
-      } else {
-        document.getElementById("emailError").innerText = "";
+      if (passwordInput.value.length < 8) {
+        passwordError.innerText = 'Password must be at least 8 characters long!';
+        isValid = false;
       }
-
-      if (password.length < 8) {
-        document.getElementById("passwordError").innerText =
-          "Password must be at least 8 characters long";
-        return false;
-      } else {
-        document.getElementById("passwordError").innerText = "";
+      if (!isValid) {
+        event.preventDefault();
       }
-      return true;
-
-
     }
   </script>
 </body>

@@ -3,8 +3,6 @@ session_start();
 
 include("connection.php");
 
-
-?>
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +24,11 @@ include("connection.php");
             </div>
             <ul>
                 <li><a href="homepage.php">Home</a></li>
-                <li><a href="loginform.php">Log In</a></li>
+                <?php if (isset($_SESSION['user_id']) || isset($_SESSION['admin_id'])) : ?>
+                    <li><a href="logout.php">Log Out</a></li>
+                <?php else : ?>
+                    <li><a href="loginform.php">Log In</a></li>
+                <?php endif; ?>
                 <li><a href="YogaClasses.php">Yoga Classes</a></li>
                 <li><a href="Meditation.php">Meditation Classes</a></li>
                 <li><a href="TranquilGoods.php">TranquilGoods</a></li>

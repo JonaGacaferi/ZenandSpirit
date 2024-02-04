@@ -1,4 +1,5 @@
 <?php
+include_once 'Admin.php';
 include_once 'connection.php';
 
 class AdminRepository
@@ -19,7 +20,7 @@ class AdminRepository
         $email = $admin->getEmail();
         $password = $admin->getPassword();
 
-        $sql = "INSERT INTO admin (username, email, password) VALUES (?,?,?)";
+        $sql = "INSERT INTO user_form (username, email, password) VALUES (?,?,?)";
         $statement = $conn->prepare($sql);
         $statement->execute([$username, $email, $password]);
 
@@ -30,7 +31,7 @@ class AdminRepository
     {
         $conn = $this->connection;
 
-        $sql = "SELECT * FROM admin";
+        $sql = "SELECT * FROM user_form";
         $statement = $conn->query($sql);
         $admins = $statement->fetchAll();
 
@@ -41,7 +42,7 @@ class AdminRepository
     {
         $conn = $this->connection;
 
-        $sql = "SELECT * FROM admin WHERE id = '$id'";
+        $sql = "SELECT * FROM user_form WHERE id = '$id'";
         $statement = $conn->query($sql);
         $admin = $statement->fetch();
 
@@ -52,7 +53,7 @@ class AdminRepository
     {
         $conn = $this->connection;
 
-        $sql = "UPDATE admin SET username = ?, email = ?, password = ? WHERE role = ?";
+        $sql = "UPDATE user_form SET username = ?, email = ?, password = ? WHERE role = ?";
         $statement = $conn->prepare($sql);
         $statement->execute($username, $email, $password);
 
@@ -63,22 +64,43 @@ class AdminRepository
     {
         $conn = $this->connection;
 
-        $sql = "DELETE FROM admin WHERE id = ?";
+        $sql = "DELETE FROM user_form WHERE id = ?";
         $statement = $conn->prepare($sql);
         $statement->execute($id);
 
         //echo "<script>alert('delete was successful'); </script>";
     }
 
-    public function adminExists($username, $email)
+    function adminExists($username, $email)
     {
         $conn = $this->connection;
 
-        $sql = "SELECT COUNT(*) AS count FROM admin WHERE username = ? OR email = ?";
+        $sql = "SELECT COUNT(*) AS count FROM user_form WHERE username = ? OR email = ?";
         $statement = $conn->prepare($sql);
         $statement->execute([$username, $email]);
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $result['count'] > 0;
+    }
+
+    function getAdminByUsername($username)
+    {
+        $conn = $this->connection;
+
+        $sql = "SELECT * FROM user_form WHERE name = ?";
+        $statement = $conn->prepare($sql);
+        $statement->execute([$username]);
+        $adminRecord = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($adminRecord) {
+            $admin = new Admin(
+                $adminRecord['name'],
+                $adminRecord['email'],
+                $adminRecord['password'],
+                $adminRecord['user_type']
+            );
+            return $admin;
+        }
+        return null;
     }
 }

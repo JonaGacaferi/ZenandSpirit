@@ -2,8 +2,6 @@
 session_start();
 
 include("connection.php");
-
-
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +23,8 @@ include("connection.php");
       </div>
       <ul>
         <li><a href="homepage.php">Home</a></li>
-        <?php if (isset($_SESSION['user_id'])) : ?>
-          <li><a href="logout.php">LogOut</a></li>
+        <?php if (isset($_SESSION['user_id']) || isset($_SESSION['admin_id'])) : ?>
+          <li><a href="logout.php">Log Out</a></li>
         <?php else : ?>
           <li><a href="loginform.php">Log In</a></li>
         <?php endif; ?>
@@ -145,7 +143,7 @@ include("connection.php");
     <div class="footercenter">
       <p>Help</p>
       <p>Support</p>
-      <p>Contact</p>
+      <p><a href="ContactUs.php" style="text-decoration: none; color: #c3c3c3;">Contact Us</a></p>
     </div>
     <div class="footerright">
       <p>Terms of use</p>

@@ -12,10 +12,14 @@ class User
     {
         $this->name = $name;
         $this->email = $email;
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
+        $this->password = $password;
         $this->role = $role;
     }
 
+    function getId()
+    {
+        return $this->id;
+    }
     function getName()
     {
         return $this->name;
@@ -33,6 +37,10 @@ class User
         return $this->role;
     }
 
+    function setId($id)
+    {
+        $this->id = $id;
+    }
     function setName($name)
     {
         $this->name = $name;
@@ -52,6 +60,6 @@ class User
 
     function isAdmin()
     {
-        return $this->role === 'admin';
+        return $this->getRole() === 'admin';
     }
 }

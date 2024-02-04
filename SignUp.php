@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connection.php';
 include_once 'class/User.php';
 include_once 'class/UserRepository.php';
@@ -10,9 +11,9 @@ function checkForErrors($name, $email, $password, $confirm, $user)
   $userRepository = new UserRepository();
 
   if (empty($name) || empty($email) || empty($password) || empty($confirm)) {
-    return "Please fill all the fields!";
-  } elseif ($userRepository->userExists($user->getName(), $user->getEmail())) {
-    return "User with the given username or email already exists!";
+    return "<span style='color: red;'>Please fill all the fields!</span>";
+  } elseif ($userRepository->userExists($name, $email)) {
+    return "<span style='color: red;'>User with the given username or email already exists!</span>";
   }
   return null;
 }
@@ -20,7 +21,7 @@ function checkForErrors($name, $email, $password, $confirm, $user)
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $name = $_POST['username'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
+  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
   $confirm = $_POST['confirmPassword'];
   $role = $_POST['user_type'];
 
@@ -59,11 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </div>
         <ul>
           <li><a href="homepage.php">Home</a></li>
-          <?php if (isset($_SESSION['user_id'])) : ?>
-            <li><a href="logout.php">LogOut</a></li>
-          <?php else : ?>
-            <li><a href="loginform.php">Log In</a></li>
-          <?php endif; ?>
+          <li><a href="loginform.php">Log In</a></li>
           <li><a href="YogaClasses.php">Yoga Classes</a></li>
           <li><a href="Meditation.php">Meditation Classes</a></li>
           <li><a href="TranquilGoods.php">TranquilGoods</a></li>
@@ -83,22 +80,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       ?>
 
       <input type="text" id="username" name="username" placeholder="Username" />
-      <span id="usernameError" class="error"></span>
+      <span id="usernameError" class="error" style="color: red;"></span>
 
       <br />
 
       <input type="email" id="email" name="email" placeholder="Email Address" />
-      <span id="emailError" class="error"></span>
+      <span id="emailError" class="error" style="color: red;"></span>
 
       <br />
 
       <input type="password" id="password" name="password" placeholder="Create Password" />
-      <span id="passwordError" class="error"></span>
+      <span id="passwordError" class="error" style="color: red;"></span>
 
       <br />
 
       <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
-      <span id="confirmPasswordError" class="error"></span>
+      <span id="confirmPasswordError" class="error" style="color: red;"></span>
 
       <label class="form-label">Select User Type:</label>
 
@@ -133,75 +130,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
       let usernameRegex = /^[a-zA-Z0-9\-]+$/;;
       let emailRegex = /^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\.[a-zA-Z]{2,4}$/;
-      let passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
       usernameError.innerText = '';
       emailError.innerText = '';
       passwordError.innerText = '';
       confirmPasswordError.innerText = '';
 
+      let isValid = true;
+
       if (!usernameRegex.test(usernameInput.value)) {
         usernameError.innerText = 'Please enter a valid username!';
-        event.preventDefault();
-        return;
+        isValid = false;
       }
       if (!emailRegex.test(emailInput.value)) {
         emailError.innerText = 'Please enter a valid email!';
-        event.preventDefault();
-        return;
+        isValid = false;
       }
-      if (!passwordRegex.test(passwordInput.value)) {
-        passwordError.innerText = 'Please enter a valid password!';
-        return;
+      if (passwordInput.value.length < 8) {
+        passwordError.innerText = 'Password must be at least 8 characters long!';
+        isValid = false;
       }
       if (passwordInput.value !== confirmpasswordInput.value) {
         confirmPasswordError.innerText = 'Password does not match!';
+        isValid = false;
+      }
+
+      if (!isValid) {
         event.preventDefault();
-        return;
       }
     }
-    /*
-    function validateForm() {
-      var username = document.getElementById("username").value;
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      var confirmPassword = document.getElementById("confirmPassword").value;
-
-      if (username.trim() === "") {
-        document.getElementById("usernameError").innerText =
-          "Username cannot be empty";
-        return false;
-      } else {
-        document.getElementById("usernameError").innerText = "";
-      }
-
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        document.getElementById("emailError").innerText =
-          "Invalid email address";
-        return false;
-      } else {
-        document.getElementById("emailError").innerText = "";
-      }
-
-      if (password.length < 8) {
-        document.getElementById("passwordError").innerText =
-          "Password must be at least 8 characters long";
-        return false;
-      } else {
-        document.getElementById("passwordError").innerText = "";
-      }
-
-      if (password !== confirmPassword) {
-        document.getElementById("confirmPasswordError").innerText =
-          "Passwords do not match";
-        return false;
-      } else {
-        document.getElementById("confirmPasswordError").innerText = "";
-      }
-      return true;
-    }
-    */
   </script>
 </body>
 
