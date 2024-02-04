@@ -16,9 +16,8 @@ if(isset($_GET['deleteUserId']) && !empty($_GET['deleteUserId'])) {
 
 if(isset($_GET['editUserId']) && !empty($_GET['editUserId'])) {
   $editUserId = $_GET['editUserId'];
-  // Redirect to edit.php with the user ID for editing
   header("Location: edit.php?editId=$editUserId");
-  exit; // Stop further execution to prevent accidental output
+  exit; 
 }
 
 if(isset($_GET['deleteProductId']) && !empty($_GET['deleteProductId'])) {
@@ -28,15 +27,22 @@ if(isset($_GET['deleteProductId']) && !empty($_GET['deleteProductId'])) {
 
 if(isset($_GET['editProductId']) && !empty($_GET['editProductId'])) {
   $editProductId = $_GET['editProductId'];
-  // Redirect to edit.php with the product ID for editing
+  
   header("Location: edit_products.php?editId=$editProductId");
-  exit; // Stop further execution to prevent accidental output
+  exit; 
 }
 
 
 if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) {
     $deleteContactFormId = $_GET['deleteContactFormId'];
     $contactObj->deleteContactForm($deleteContactFormId);
+}
+
+if(isset($_GET['editContactFormId']) && !empty($_GET['editContactFormId'])) {
+  $editContactFormId = $_GET['editContactFormId'];
+ 
+  header("Location: edit_contact_form.php?editId=$editContactFormId");
+  exit; 
 }
 
 
@@ -316,13 +322,14 @@ if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) 
         $products = $productObj->displayProducts();
         foreach ($products as $product) {
             echo "<tr>";
-            echo "<td>{$product['id']}</td>";
+            echo "<td>" . (isset($product['id']) ? $product['id'] : '') . "</td>";
+
             echo "<td>{$product['name']}</td>";
             echo "<td>{$product['price']}</td>";
             echo "<td><img src='images/{$product['image']}' alt='{$product['name']}' style='max-width: 100px; max-height: 100px;'></td>";
             echo "<td>
-                    <a href='edit_products.php?editProductId={$product['id']}' class='btn'>Edit</a>
-                    <a href='dashboard.php?deleteProductId={$product['id']}' class='btn' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>
+                    <a href='edit_products.php?editProductId=". (isset($product['id']) ? $product['id'] : '') . "' class='btn'>Edit</a>
+                    <a href='dashboard.php?deleteProductId=" . (isset($product['id']) ? $product['id'] : '') . "' class='btn' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>
                   </td>";
             echo "</tr>";
         }
@@ -342,29 +349,25 @@ if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) 
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    $contacts = $contactObj->displayContactForms();
-                    foreach ($contacts as $contact) {
-                        echo "<tr>";
-                        echo "<td>{$contact['id']}</td>";
-                        echo "<td>{$contact['name']}</td>";
-                        echo "<td>{$contact['email']}</td>";
-                        echo "<td>{$contact['note']}</td>";
                 <?php
-                $contacts = $contactObj->displayContactForms();
-                foreach ($contacts as $contact) {
-                    echo "<tr>";
-                    echo "<td>{$contact['name']}</td>";
-                    echo "<td>{$contact['email']}</td>";
-                    echo "<td>{$contact['note']}</td>";
+                  
+                  $contacts = $contactObj->displayContactForms();
+                  foreach ($contacts as $contact) {
+                      echo "<tr>";
+                      echo "<td>" . (isset($contact['id']) ? $contact['id'] : '') . "</td>";
+          
+                      echo "<td>{$contact['name']}</td>";
+                      echo "<td>{$contact['email']}</td>";
+                      echo "<td><{$contact['note']}</td>";
+                      echo "<td>
+                              <a href='edit_contacts.php?editContactFormId=". (isset($contact['id']) ? $contact['id'] : '') . "' class='btn'>Edit</a>
+                              <a href='dashboard.php?deleteContactFormId=" . (isset($contact['id']) ? $contact['id'] : '') . "' class='btn' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>
+                            </td>";
+                      echo "</tr>";
+                  }
 
-                        echo "<td>
-                            <a href='#' class='btn btn-primary mr-2'><i class='fa fa-pencil'></i></a>
-                            <a href='Dashboard.php?deleteProductId=" . (isset($contact['id']) ? $contact['id'] : '') . "' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to delete this contact form?\");'><i class='fa fa-trash'></i></a>
-                          </td>";
-                        echo "</tr>";
-                    }
-                    ?>
+?>
+
                 </tbody>
             </table>
         </div>
@@ -377,7 +380,7 @@ if(isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) 
     if (event.target.classList.contains('btn')) {
         var button = event.target;
         if (button.textContent === 'Delete') {
-            var confirmDelete = confirm("Are you sure you want to delete this item?");
+            var confirmDelete = confirm("Are you sure you want to delete ?");
             if (!confirmDelete) {
                 event.preventDefault(); 
             }

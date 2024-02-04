@@ -154,20 +154,7 @@ if (isset($_POST['add_product'])) {
             <div id="total-price"></div>
             <button class="checkout-btn">Checkout</button>
         </div>
-    </div>
-
-    <div class="container-admin">
-        <div class="admin-product-form">
-            <form action="<?php $_SERVER['PHP_SELF'] ?>">
-                <h3>Add a new product</h3>
-                <input type="text" placeholder="enter product name" name="product_emri" class="box">
-                <input type="number" placeholder="enter product price" name="product_cmimi" class="box">
-                <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_foto" class="box">
-                <input type="submit" class="btn" name="add_product" value="add product">
-            </form>
-
-        </div>
-
+</div>
 
     </div>
 

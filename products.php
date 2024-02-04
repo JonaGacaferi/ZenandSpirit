@@ -77,7 +77,7 @@ public function displayProducts()
         {
             $name = $this->con->real_escape_string($_POST['uname']);
             $price = $this->con->real_escape_string($_POST['uprice']);
-            // Check if 'uimage' key is set before accessing it
+           
             $image = isset($_POST['uimage']) ? $this->con->real_escape_string($_POST['uimage']) : '';
             $id = $this->con->real_escape_string($_POST['id']);
         

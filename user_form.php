@@ -9,7 +9,7 @@
         public  $con;
 
 
-        // Database Connection 
+     
         public function __construct()
         {
             $this->con = new mysqli($this->server, $this->username,$this->password,$this->database);
@@ -20,14 +20,14 @@
             }
         }
 
-        // Insert customer data into customer table
+     
         public function insertData($post)
         {
            
             $name = $this->con->real_escape_string($_POST['name']);
             $email = $this->con->real_escape_string($_POST['email']);
             $password = $this->con->real_escape_string($_POST['password']);
-           // $user_type = $this->con->real_escape_string($_POST['user_type']);
+          
 
 
             $query="INSERT INTO user_form(name,email,password) VALUES('$name','$email','$password')";
@@ -39,7 +39,7 @@
             }
         }
 
-        // Fetch customer records for show listing
+    
         public function displayData()
         {
             $query = "SELECT * FROM user_form";
@@ -55,7 +55,7 @@
             }
         }
 
-        // Fetch single data for edit from customer table
+      
         public function displayRecordById($id)
         {
             $query = "SELECT * FROM user_form WHERE id = '$id'";
@@ -68,7 +68,7 @@
             }
         }
 
-        // Update customer data into customer table
+        
         public function updateRecord($postData)
         {
             $name = $this->con->real_escape_string($_POST['uname']);
@@ -87,7 +87,6 @@
             
         }
 
-        // Delete customer data from customer table
         public function deleteRecord($id)
         {
             $query = "DELETE FROM user_form WHERE id = '$id'";
