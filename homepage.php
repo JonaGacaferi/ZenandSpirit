@@ -23,7 +23,7 @@ include("connection.php");
       </div>
       <ul>
         <li><a href="homepage.php">Home</a></li>
-        <?php if (isset($_SESSION['user_id']) || isset($_SESSION['admin_id']) == false) : ?>
+        <?php if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) : ?>
           <li><a href="logout.php">Log Out</a></li>
         <?php else : ?>
           <li><a href="loginform.php">Log In</a></li>

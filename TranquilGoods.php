@@ -50,7 +50,7 @@ if (isset($_POST['add_product'])) {
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
 
-                    <?php if (isset($_SESSION['user_id']) || isset($_SESSION['admin_id'])) : ?>
+                    <?php if (!isset($_SESSION['user_id']) || !isset($_SESSION['admin_id'])) : ?>
                         <li><a href="logout.php">Log Out</a></li>
                     <?php else : ?>
                         <li><a href="loginform.php">Log In</a></li>
@@ -154,7 +154,7 @@ if (isset($_POST['add_product'])) {
             <div id="total-price"></div>
             <button class="checkout-btn">Checkout</button>
         </div>
-</div>
+    </div>
 
     </div>
 

@@ -33,16 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     redirectTo($admin);
   } else {
     if (!$user) {
-      echo '<script>alert("User not found.");</script>';
+      echo '<script>alert("User not found. Please sign up first.");</script>';
+      echo '<script>window.location.href = "SignUp.php";</script>';
+      exit;
     } elseif (!password_verify($password, $user->getPassword())) {
       echo '<script>alert("Incorrect password.");</script>';
     }
-    // Uncomment the following line to redirect to the login page instead of signup
-    // echo '<script>window.location.href = "loginform.php";</script>';
-
-    //echo '<script>alert("User not found. Please sign up first.");</script>';
-    //echo '<script>window.location.href = "SignUp.php";</script>';
-    //exit;
   }
 }
 ?>
