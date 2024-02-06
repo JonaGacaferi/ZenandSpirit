@@ -7,7 +7,7 @@ $userObj = new userat();
 $productObj = new products();
 $contactObj = new contact_form();
 
-
+$products = $productObj->displayProducts();
 
 if (isset($_GET['deleteUserId']) && !empty($_GET['deleteUserId'])) {
     $deleteUserId = $_GET['deleteUserId'];
@@ -15,9 +15,9 @@ if (isset($_GET['deleteUserId']) && !empty($_GET['deleteUserId'])) {
 }
 
 if(isset($_GET['editUserId']) && !empty($_GET['editUserId'])) {
-  $editUserId = $_GET['editUserId'];
-  header("Location: edit.php?editId=$editUserId");
-  exit; 
+    $editUserId = $_GET['editUserId'];
+    header("Location: edit.php?editId=$editUserId");
+    exit;
 }
 
 if (isset($_GET['deleteProductId']) && !empty($_GET['deleteProductId'])) {
@@ -26,12 +26,10 @@ if (isset($_GET['deleteProductId']) && !empty($_GET['deleteProductId'])) {
 }
 
 if(isset($_GET['editProductId']) && !empty($_GET['editProductId'])) {
-  $editProductId = $_GET['editProductId'];
-  
-  header("Location: edit_products.php?editId=$editProductId");
-  exit; 
+    $editProductId = $_GET['editProductId'];
+    header("Location: edit_products.php?editId=$editProductId");
+    exit;
 }
-
 
 if (isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId'])) {
     $deleteContactFormId = $_GET['deleteContactFormId'];
@@ -39,11 +37,10 @@ if (isset($_GET['deleteContactFormId']) && !empty($_GET['deleteContactFormId']))
 }
 
 if(isset($_GET['editContactFormId']) && !empty($_GET['editContactFormId'])) {
-  $editContactFormId = $_GET['editContactFormId'];
- 
-  header("Location: edit_contact_form.php?editId=$editContactFormId");
-  exit; 
-}
+    $editContactFormId = $_GET['editContactFormId'];
+    header("Location: edit_contactform.php?editId=$editContactFormId");
+    exit;
+}   
 
 
 ?>
@@ -276,7 +273,7 @@ if(isset($_GET['editContactFormId']) && !empty($_GET['editContactFormId'])) {
                         <th>Action</th>
                     </tr>
                 </thead>
-                ...
+                
                 <tbody>
                     <?php
                     $users = $userObj->displayData();
@@ -298,7 +295,7 @@ if(isset($_GET['editContactFormId']) && !empty($_GET['editContactFormId'])) {
                     }
                     ?>
                 </tbody>
-                ...
+                
 
             </table>
         </div>
@@ -312,25 +309,26 @@ if(isset($_GET['editContactFormId']) && !empty($_GET['editContactFormId'])) {
             <th>Name</th>
             <th>Price</th>
             <th>Image</th>
+            <th>Description</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $products = $productObj->displayProducts();
         foreach ($products as $product) {
             echo "<tr>";
             echo "<td>" . (isset($product['id']) ? $product['id'] : '') . "</td>";
-
             echo "<td>{$product['name']}</td>";
             echo "<td>{$product['price']}</td>";
             echo "<td><img src='images/{$product['image']}' alt='{$product['name']}' style='max-width: 100px; max-height: 100px;'></td>";
+            echo "<td>" . (isset($product['description']) ? $product['description'] : '') . "</td>"; 
             echo "<td>
                     <a href='edit_products.php?editProductId=". (isset($product['id']) ? $product['id'] : '') . "' class='btn'>Edit</a>
                     <a href='dashboard.php?deleteProductId=" . (isset($product['id']) ? $product['id'] : '') . "' class='btn' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>
                   </td>";
-                        echo "</tr>";
-                    }
+            echo "</tr>";
+        }
+        
                     ?>
                 </tbody>
             </table>
@@ -378,7 +376,6 @@ if(isset($_GET['editContactFormId']) && !empty($_GET['editContactFormId'])) {
     if (event.target.classList.contains('btn')) {
         var button = event.target;
         if (button.textContent === 'Delete') {
-            var confirmDelete = confirm("Are you sure you want to delete ?");
             if (!confirmDelete) {
                 event.preventDefault(); 
             }

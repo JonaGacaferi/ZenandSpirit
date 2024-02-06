@@ -20,20 +20,15 @@ class products
     }
 
   
-    public function insertProduct($post)
-    {
-        $name = $this->con->real_escape_string($_POST['name']);
-        $price = $this->con->real_escape_string($_POST['price']);
-        $image = $this->con->real_escape_string($_POST['image']); 
-
-        $query="INSERT INTO products(name,price,image) VALUES('$name','$price','$image')";
-        $sql = $this->con->query($query);
-        if ($sql==true) {
-            header("Location:Dashboard.php?msg1=insert");
-        }else{
-            echo "Registration failed try again!";
-        } 
+    public function insertProduct($name, $price, $image, $description){
+        $query = "INSERT INTO products (name, price, image, description) VALUES (?, ?, ?, ?)";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param("ssss", $name, $price, $image, $description);
+        $stmt->execute();
+        $stmt->close();
     }
+    
+
 
     
 public function displayProducts()
@@ -79,10 +74,11 @@ public function displayProducts()
             $price = $this->con->real_escape_string($_POST['uprice']);
            
             $image = isset($_POST['uimage']) ? $this->con->real_escape_string($_POST['uimage']) : '';
+            $description = $this->con->real_escape_string($_POST['description']);
             $id = $this->con->real_escape_string($_POST['id']);
         
             if (!empty($id) && !empty($postData)) {
-                $query = "UPDATE products SET name = '$name', price = '$price', image = '$image' WHERE id = '$id'";
+                $query = "UPDATE products SET name = '$name', price = '$price', image = '$image'  , description='$description' WHERE id = '$id'";
                 $sql = $this->con->query($query);
                 if ($sql == true) {
                     header("Location:Dashboard.php?msg2=update");
@@ -93,15 +89,15 @@ public function displayProducts()
         }
         
    
-    public function deleteProduct($id)
-    {
-        $query = "DELETE FROM products WHERE id = '$id'";
-        $sql = $this->con->query($query);
-    if ($sql==true) {
-        header("Location:Dashboard.php?msg3=delete");
-    }else{
-        echo "Record does not delete try again";
-        }    }
-}
+        public function deleteProduct($id)
+        {
+            $id = $this->con->real_escape_string($id);
+            $query = "DELETE FROM products WHERE id = '$id'";
+            $sql = $this->con->query($query);
+            if ($sql == true) {
+                return true; 
+            } 
+        }
+    }        
 
 ?>

@@ -21,7 +21,7 @@ if(isset($_POST['update'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit User</title>
+    <title>Edit Contacts</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -70,7 +70,7 @@ if(isset($_POST['update'])) {
 
 <div class="container">
     <div class="edit-section">
-        <h2>Edit User</h2>
+        <h2>Edit Contacts</h2>
         <form action="edit_contacts.php" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>

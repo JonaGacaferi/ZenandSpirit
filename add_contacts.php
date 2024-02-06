@@ -61,7 +61,7 @@ if(isset($_POST['submit'])) {
 
 <div class="container">
     <div class="add-section">
-        <h2>Add New Product</h2>
+        <h2>Add New Contact</h2>
         <form action="add_contacts.php" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>

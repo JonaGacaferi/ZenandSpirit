@@ -85,7 +85,7 @@ include("connection.php");
     </div>
 
     <script>
-        var i = 0;
+                var i = 0;
         var imgArray = [
             "img_Jona/foto10.jpg",
             "img_Jona/foto2.jpg",
@@ -99,21 +99,24 @@ include("connection.php");
             if (i < imgArray.length - 1) {
                 i++;
             } else {
-                i = 0;
+                i = 0; 
             }
-
         }
-        document.body.addEventListener('load', nextImg());
 
         function prevImg() {
-            document.getElementById('slideshow').src = imgArray[i];
-            if (i >= 0) {
-                i--;
+            if (i > 0) {
+                i--; 
             } else {
-                i = imgArray.length - 1;
+                i = imgArray.length - 1; 
             }
+            document.getElementById('slideshow').src = imgArray[i];
         }
-        document.body.addEventListener('load', prevImg());
+
+        window.addEventListener('load', function() {
+            nextImg();
+        });
+
+
     </script>
 </body>
 <footer>
