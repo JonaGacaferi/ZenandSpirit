@@ -149,10 +149,10 @@ include("connection.php");
       <p>Terms of use</p>
       <p>Privacy Policy</p>
     </div>
-    <div class="fundi">
-      <p>© 2023 Zen & Spirit. All rights reserved.</p>
-      <p>Designed by B&J</p>
-    </div>
+  </div>
+  <div class="fundi">
+    <p>© 2023 Zen & Spirit. All rights reserved.</p>
+    <p>Designed by B&J</p>
   </div>
 </footer>
 
