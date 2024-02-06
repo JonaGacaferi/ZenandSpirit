@@ -1,27 +1,12 @@
 <?php
 session_start();
 
-//if (!isset($_SESSION['user_id']) || !isset($_SESSION['admin_id'])) {
-//    header("Location: loginform.php");
-//    die;
-//}
+include 'products.php';
 
-require_once 'connection.php';
-
-if (isset($_POST['add_product'])) {
-    $product_emri = $_POST['product_emri'];
-    $product_cmimi = $_POST['product_cmimi'];
-    $product_foto = $_FILES['product_foto']['name'];
-    $product_foto_tmp_name = $_POST['product_foto']['tmp_name'];
-    $product_foto_folder = 'img_Jona/' . $product_foto;
-
-    if (empty($product_emri) || empty($product_cmimi) || empty($product_foto)) {
-        $message[] = 'Fill all the boxes';
-    }
-}
+$productObj = new products();
+$products = $productObj->displayProducts();
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,10 +21,6 @@ if (isset($_POST['add_product'])) {
 </head>
 
 <body>
-
-
-
-
     <header>
         <div class="menu">
             <nav>
@@ -65,11 +46,14 @@ if (isset($_POST['add_product'])) {
     </header>
 
     <?php
-    if (isset($message)) {
-        foreach ($message as $msg) {
-            echo '<span class="message">' . $msg . '</span>';
+
+ 
+        if (isset($message) && is_array($message)) {
+            foreach ($message as $msg) {
+                echo '<span class="message">' . $msg . '</span>';
+            }
         }
-    }
+
     ?>
 
     <section id="product-container">
@@ -143,6 +127,34 @@ if (isset($_POST['add_product'])) {
                 <span class="price">$29.99</span>
                 <i class='bx bx-shopping-bag add-cart'></i>
             </div>
+
+            
+            <?php foreach ($products as $product): ?>
+        <div class="product-box">
+            <img src="desktop/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" class="product-images">
+            <h3 id="titulli-prod"><?php echo $product['name']; ?></h3>
+            <?php if (isset($product['description'])): ?>
+                <p>Description: <?php echo $product['description']; ?></p>
+            <?php else: ?>
+                <p>No description available</p>
+            <?php endif; ?>
+            <span class="price">$<?php echo $product['price']; ?></span>
+            <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+    <?php endforeach; ?>
+
+
+
+
+        <?php
+        if (isset($yourArray['description'])) {
+            $description = $yourArray['description'];
+        } else {
+            $description = "Description not available";
+        }
+        ?>
+
+
         </div>
     </section>
     <div id="cart-popup" class="cart-popup">
@@ -157,8 +169,6 @@ if (isset($_POST['add_product'])) {
     </div>
 
     </div>
-
-
 
 </body>
 <footer>

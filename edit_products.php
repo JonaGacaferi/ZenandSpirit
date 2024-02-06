@@ -52,7 +52,8 @@ if (isset($_POST['update'])) {
 
         input[type="text"],
         input[type="price"],
-        input[type="image"] {
+        input[type="image"] ,
+        input[type="description"]{
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -79,7 +80,7 @@ if (isset($_POST['update'])) {
 
     <div class="container">
         <div class="edit-section">
-            <h2>Edit User</h2>
+            <h2>Edit Products</h2>
             <form action="edit_products.php" method="POST">
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -92,6 +93,10 @@ if (isset($_POST['update'])) {
                 <div class="form-group">
                     <label for="image">Image:</label>
                     <input type="file" accept="image/png, image/jpeg, image/jpg" name="image" value="<?php echo isset($uform['image']) ? $uform['image'] : ''; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" value="<?php echo isset($uform['description']) ? $uform['description'] : ''; ?>" required>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="id" value="<?php echo isset($uform['id']) ? $uform['id'] : ''; ?>">
